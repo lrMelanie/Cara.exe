@@ -1,0 +1,24 @@
+from transformers import DistilBertForSequenceClassification, DistilBertTokenizer
+try: model_name_t5 = "t5-largetokenizer_t5 = T5Tokenizer.from_pretrained(model_name_t5, legacy=True)
+logging.info("T5 model loaded successfully.")
+except Exception as e:logging.error(f"Error loading model: {e}")
+model_name_distilbert = "distilbert-base-uncased"
+logging.info("DistilBERT model loaded successfully.")
+def speak_text(text, lang='pl'):
+try: tts = gTTS(text=text, lang=lang)
+tts.save("response.mp3")
+os.system("mpg321 response.mp3")
+def translate_text(input_text):
+try:input_ids_t5 = tokenizer_t5.encode(input_text, return_tensors="pt")
+return "Error in Translate"
+def classify_text(text_to_classify):
+try:outputs = model_distilbert(input_ids_distilbert)
+predicted_label_idx = outputs.logits.argmax().item()
+predicted_label = model_distilbert.config.id2label[predicted_label_idx]
+return predicted_label
+def generate_text(input_text):
+try: output_text_gpt3 = model_gpt3.generate(input_ids=input_ids_gpt3)
+max_length=50, num_return_sequences=1,
+do_sample=True,
+attention_mask=attention_mask_gpt3,
+pad_token_id=tokenizer_gpt3.eos_token_id

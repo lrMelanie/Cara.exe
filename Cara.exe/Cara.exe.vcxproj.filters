@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Pliki źródłowe">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Pliki zasobów">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Data">
+      <UniqueIdentifier>{225e3d96-def2-4b2d-b891-7f64527bfa0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Game">
+      <UniqueIdentifier>{87058488-4f12-49da-9f99-82f17a41b3b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{8b20c5cf-d3b7-4548-aff2-dadf9d787f7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Data\verfile">
+      <UniqueIdentifier>{af45043f-c289-4d0e-8eb0-95b29365edbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Game\Coderunner">
+      <UniqueIdentifier>{64394ad4-859e-4f68-bf95-7c77c6b01818}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Game\Coderunner\CodrunnerData">
+      <UniqueIdentifier>{ef26f77d-d727-4c00-9859-25c5fce1858f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Data\VirtualAssistant">
+      <UniqueIdentifier>{e75cdb00-6eac-4f56-b192-ebb7392d0f98}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="maincore.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="load.cpp">
+      <Filter>Pliki źródłowe\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Minigame.cpp">
+      <Filter>Pliki źródłowe\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualAssistant.cpp">
+      <Filter>Pliki źródłowe\Data\VirtualAssistant</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="todo.txt" />
+    <Text Include="Data\vol1.txt">
+      <Filter>Pliki źródłowe\Data</Filter>
+    </Text>
+    <Text Include="Data\vol2.txt">
+      <Filter>Pliki źródłowe\Data</Filter>
+    </Text>
+    <Text Include="Data\fileVerify1.txt">
+      <Filter>Pliki źródłowe\Data\verfile</Filter>
+    </Text>
+    <Text Include="Data\fileVerify2.txt">
+      <Filter>Pliki źródłowe\Data\verfile</Filter>
+    </Text>
+    <Text Include="Minigame\repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\hscore.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="VirtualAssistant.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Minigame.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="load.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tools\devcon.exe">
+      <Filter>Tools</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="Cara.exe.manifest">
+      <Filter>Pliki źródłowe</Filter>
+    </Manifest>
+  </ItemGroup>
+</Project>
