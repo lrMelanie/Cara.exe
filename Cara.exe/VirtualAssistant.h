@@ -22,7 +22,6 @@ protected:
     std::ofstream logFile;
     std::mt19937 gen;
 
-    void log(const std::string& action);
     void reminderDaemon();
     std::vector<std::string> load_file(const std::string& path);
     void processMottoFile();
@@ -31,7 +30,7 @@ protected:
 public:
     VirtualAssistant();
     virtual ~VirtualAssistant();
-
+    void log(const std::string& action);
     void give_motto();
     void say();
     void add_event(const std::string& datetime, const std::string& event);

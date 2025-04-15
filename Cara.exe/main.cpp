@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "main.h"
 #include "utils.h"
 #include "VirtualAssistant.h"
@@ -18,6 +19,11 @@
 
 using namespace std;
 
+#if defined _M_IX86
+#pragma comment(linker, "/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='x86' publicKeyToken='6595b64144ccf1df'\"")
+#elif defined _M_AMD64
+#pragma comment(linker, "/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='amd64' publicKeyToken='6595b64144ccf1df'\"")
+#endif
 #pragma comment(lib, "ole32.lib") 
 #pragma comment(lib, "winmm.lib")
 #pragma comment(lib, "kernel32.lib")
@@ -122,36 +128,50 @@ void enable_airplane_mode() {
 
 
 void activate_bluetooth() {
-    const string devconPath = "\"" + string(getenv("CD")) + "\\Tools\\devcon.exe\"";
-    if (file_exists("Tools\\devcon.exe")) {
-        vector<string> commands = {
-            devconPath + " enable *DEV_0A12*",
-            devconPath + " enable *USB\\VID_0A12*",
-            devconPath + " rescan"
-        };
-
-        ofstream log("C:\\Windows\\Temp\\bluetooth_log.txt");
-        for (const auto& cmd : commands) {
-            int result = system(cmd.c_str());
-            log << "Command: " << cmd << "\nResult: " << result << endl;
-        }
-        log.close();
+    char currentDir[MAX_PATH];
+    if (!GetModuleFileNameA(NULL, currentDir, MAX_PATH)) {
+        MessageBoxA(NULL, "B³¹d pobierania œcie¿ki!", "Error", MB_ICONERROR);
+        return;
     }
-    system(
-        "powershell -Command \""
-        "Try {"
-        "   Start-Service -Name 'BthServ' -ErrorAction Stop; "
-        "   Set-Service -Name 'BthServ' -StartupType Automatic; "
-        "   Start-Service -Name 'BTAGService' -ErrorAction Stop; "
-        "   Write-Output '[SUCCESS] Bluetooth services started'; "
-        "   Add-BluetoothDevice -Name '*' -ErrorAction SilentlyContinue; "
-        "   Start-Process -FilePath 'bthprops.cpl' -Wait; "
-        "} Catch { "
-        "   Write-Output ('[ERROR] ' + $_.Exception.Message); "
-        "   Exit 1; "
-        "} | Out-File -Append 'C:\\Windows\\Temp\\bluetooth_log.txt'"
-        "\""
-    );
+
+    string exePath(currentDir);
+    size_t lastSlash = exePath.find_last_of("\\/");
+    string toolPath = exePath.substr(0, lastSlash) + "\\Tools\\devcon.exe";
+
+    if (!file_exists(toolPath.c_str())) {
+        MessageBoxA(NULL, "Nie znaleziono devcon.exe w folderze Tools!", "Error", MB_ICONERROR);
+        return;
+    }
+
+    vector<string> commands = {
+        "\"" + toolPath + "\" enable *DEV_0A12*",
+        "\"" + toolPath + "\" enable *USB\\VID_0A12*",
+        "\"" + toolPath + "\" rescan"
+    };
+
+    ofstream log("C:\\Windows\\Temp\\bluetooth_log.txt", ios::app);
+    for (const auto& cmd : commands) {
+        log << "Executing: " << cmd << endl;
+        int result = system(cmd.c_str());
+        log << "Result: " << result << endl;
+
+        if (result != 0) {
+            log << "ERROR: Command failed!" << endl;
+        }
+    }
+    const char* psScript =
+        "Start-Service -Name 'BthServ' -ErrorAction Stop; "
+        "Set-Service -Name 'BthServ' -StartupType Automatic; "
+        "Start-Service -Name 'BTAGService' -ErrorAction Stop; "
+        "Start-Sleep -Seconds 2; "  
+        "Add-BluetoothDevice -Name '*' -ErrorAction SilentlyContinue;";
+
+    string fullCommand = "powershell -Command \"" + string(psScript) + "\"";
+    log << "Executing PowerShell: " << fullCommand << endl;
+    int psResult = system(fullCommand.c_str());
+    log << "PowerShell result: " << psResult << endl;
+    Sleep(3000);  
+    log << "Enabling interface via netsh";
 }
 
 bool file_exists(const char* path) {

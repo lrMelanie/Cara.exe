@@ -15,7 +15,7 @@ using namespace std;
 VirtualAssistant::VirtualAssistant() : gen(random_device()()) {
     _mkdir("Data");
     _mkdir("Notes");
-    logFile.open("assistant.log", ios::app);
+    logFile.open("Data\\assistant.log", ios::app);
 
     vol1 = load_file("Data/vol1.txt");
     vol2 = load_file("Data/vol2.txt");
@@ -145,7 +145,6 @@ void VirtualAssistant::give_motto() {
     cout << "[Assistant] ";
     print_slowly(selectedLine);
     cout << "\n\n";
-    log("Generated motto");
 }
 
 void VirtualAssistant::processMottoFile() {
@@ -222,7 +221,6 @@ void VirtualAssistant::say() {
     cout << "[Assistant] ";
     print_slowly(selectedLine);
     cout << "\n\n";
-    log("Generated saying");
 }
 
 void VirtualAssistant::processSayingFile() {
