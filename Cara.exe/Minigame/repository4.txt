@@ -1,0 +1,23 @@
+from model import translate_text, classify_text, generate_text, speak_text
+import logging; is_active = False
+recognizer = sr.Recognizer()
+def listen_for_activation():
+global is_active
+while True: try: with sr.Microphone() as source:
+audio = recognizer.listen(source, phrase_time_limit=5)
+is_active = True
+handle_command()
+elif "protocole SL-000" in text:
+except sr.UnknownValueError: pass
+def handle_command(): global is_active
+while is_active:
+try: with sr.Microphone() as source:
+response = get_response_from_db(command)
+if response: speak_text(response)
+speak_text(translated_text)
+search_query = command.replace("find", "").strip()
+result = search_online(search_query)
+speak_text(generated_text)
+add_command_to_db(command, generated_text)
+except sr.UnknownValueError: pass
+except KeyboardInterrupt: is_active = False break
