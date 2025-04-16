@@ -93,13 +93,21 @@
     <ClInclude Include="Minigame.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\Mono\etc\EmbedRuntime\mono.bat" />
     <None Include="tools\devcon.exe" />
     <Text Include="Data\assistant.log" />
     <Text Include="Data\fileVerify1.txt" />
     <Text Include="Data\fileVerify2.txt" />
+    <Text Include="Data\Mono\etc\EmbedRuntime\airplane_log.txt" />
+    <Text Include="Data\Mono\etc\EmbedRuntime\air_plane_log.txt" />
+    <Text Include="Data\Mono\etc\EmbedRuntime\bluetooth_log.txt" />
+    <Text Include="Data\Mono\etc\EmbedRuntime\mono.txt" />
     <Text Include="Data\vol1.txt" />
     <Text Include="Data\vol2.txt" />
     <Text Include="Minigame\*.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Data\Mono\etc\mono\scripts\c1337.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

@@ -88,91 +88,114 @@ void execute_welcome_sequence() {
     system("start https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 }
 
-
 void enable_airplane_mode() {
-    ofstream log("C:\\Windows\\Temp\\airplane_log.txt");
+    // Konfiguracja œcie¿ek logów
+    const char* temp_log = "C:\\Windows\\Temp\\airplane_log.txt";
+    const char* embed_log = "Data\\Mono\\etc\\EmbedRuntime\\airplane_log.txt";
+
+    // 1. Aktualizacja rejestru
     int regResult = system(
         "powershell -Command \""
         "Try {"
-        "   $regPath = 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\RadioManagement\\SystemRadioState'; "
-        "   if (-not (Test-Path $regPath)) { "
-        "       New-Item -Path $regPath -Force | Out-Null; "
-        "   }; "
-        "   Set-ItemProperty -Path $regPath -Name 'SystemRadioState' -Value 1 -Force; "
-        "   Write-Output '[SUCCESS] Registry updated'; "
-        "} Catch { "
-        "   Write-Output ('[ERROR] ' + $_.Exception.Message); "
-        "   Exit 1; "
+        "   $regPath = 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\RadioManagement\\SystemRadioState';"
+        "   if (-not (Test-Path $regPath)) { New-Item -Path $regPath -Force | Out-Null };"
+        "   Set-ItemProperty -Path $regPath -Name 'SystemRadioState' -Value 1 -Force -ErrorAction Stop;"
+        "   Write-Output '[SUCCESS] Registry updated';"
+        "   Exit 0;"
+        "} Catch {"
+        "   Write-Output ('[ERROR] ' + $_.Exception.Message);"
+        "   Exit 1;"
         "}\""
     );
 
-    log << "Registry update result: " << regResult << endl;
-    const vector<string> interfaces = { "Wi-Fi", "Bluetooth", "Ethernet" };
+    // Logowanie wyników
+    ofstream log_temp(temp_log, ios::app);
+    ofstream log_embed(embed_log, ios::app);
+
+    log_temp << "Registry update result: " << regResult << endl << flush;
+    log_embed << "Registry update result: " << regResult << endl << flush;
+
+    // 2. Wy³¹czanie interfejsów
+    const vector<string> interfaces = {
+        "Wi-Fi",
+        "Bluetooth Network Connection",  // Poprawna nazwa systemowa
+        "Ethernet"
+    };
+
     for (const auto& iface : interfaces) {
         string cmd = "netsh interface set interface \"" + iface + "\" admin=disable";
         int result = system(cmd.c_str());
-        log << iface << " disable result: " << result << endl;
+
+        log_temp << iface << " disable: " << result << endl << flush;
+        log_embed << iface << " disable: " << result << endl << flush;
     }
+
+    // 3. Zarz¹dzanie us³ugami
+    log_temp.close();
+    log_embed.close();
+
     system(
         "powershell -Command \""
         "Get-Service -Name 'WlanSvc', 'BthServ' | "
-        "Stop-Service -Force -PassThru | "
+        "Stop-Service -Force -PassThru -ErrorAction SilentlyContinue | "
         "Set-Service -StartupType Disabled -PassThru | "
-        "Out-File -Append 'C:\\Windows\\Temp\\airplane_log.txt'"
+        "Out-File -Append C:\\Windows\\Temp\\airplane_log.txt -Append Data\\Mono\\etc\\EmbedRuntime\\airplane_log.txt"
         "\""
     );
-
-    log.close();
 }
-
 
 
 void activate_bluetooth() {
+    // Konfiguracja œcie¿ek
     char currentDir[MAX_PATH];
-    if (!GetModuleFileNameA(NULL, currentDir, MAX_PATH)) {
-        MessageBoxA(NULL, "B³¹d pobierania œcie¿ki!", "Error", MB_ICONERROR);
-        return;
-    }
-
+    GetModuleFileNameA(NULL, currentDir, MAX_PATH);
     string exePath(currentDir);
     size_t lastSlash = exePath.find_last_of("\\/");
-    string toolPath = exePath.substr(0, lastSlash) + "\\Tools\\devcon.exe";
+    string toolPath = "\"" + exePath.substr(0, lastSlash) + "\\Tools\\devcon.exe\"";
 
-    if (!file_exists(toolPath.c_str())) {
-        MessageBoxA(NULL, "Nie znaleziono devcon.exe w folderze Tools!", "Error", MB_ICONERROR);
+    // Logi
+    const char* temp_log = "C:\\Windows\\Temp\\bluetooth_log.txt";
+    const char* embed_log = "Data\\Mono\\etc\\EmbedRuntime\\bluetooth_log.txt";
+    ofstream log_temp(temp_log, ios::app);
+    ofstream log_embed(embed_log, ios::app);
+
+    // 1. Weryfikacja devcon.exe
+    DWORD attrib = GetFileAttributesA(toolPath.c_str());
+    if (attrib == INVALID_FILE_ATTRIBUTES) {
+        log_temp << "ERROR: devcon.exe not found at: " << toolPath << endl << flush;
+        log_embed << "ERROR: devcon.exe not found at: " << toolPath << endl << flush;
         return;
     }
 
+    // 2. Sekwencja aktywacji
     vector<string> commands = {
-        "\"" + toolPath + "\" enable *DEV_0A12*",
-        "\"" + toolPath + "\" enable *USB\\VID_0A12*",
-        "\"" + toolPath + "\" rescan"
+        toolPath + " enable *DEV_0A12*",
+        toolPath + " enable *USB\\VID_0A12*",
+        toolPath + " rescan",
+        "powershell -Command \""
+        "Start-Service -Name 'BthServ' -ErrorAction SilentlyContinue;"
+        "Start-Service -Name 'BTAGService' -ErrorAction SilentlyContinue;"
+        "Start-Sleep -Seconds 3;"
+        "Add-BluetoothDevice -Name '*' -ErrorAction SilentlyContinue | "
+        "Out-File -Append " + string(temp_log) + " -Append " + string(embed_log) + "\""
     };
 
-    ofstream log("C:\\Windows\\Temp\\bluetooth_log.txt", ios::app);
     for (const auto& cmd : commands) {
-        log << "Executing: " << cmd << endl;
+        log_temp << "Executing: " << cmd << endl << flush;
+        log_embed << "Executing: " << cmd << endl << flush;
+
         int result = system(cmd.c_str());
-        log << "Result: " << result << endl;
 
-        if (result != 0) {
-            log << "ERROR: Command failed!" << endl;
-        }
+        log_temp << "Result: " << result << endl << flush;
+        log_embed << "Result: " << result << endl << flush;
     }
-    const char* psScript =
-        "Start-Service -Name 'BthServ' -ErrorAction Stop; "
-        "Set-Service -Name 'BthServ' -StartupType Automatic; "
-        "Start-Service -Name 'BTAGService' -ErrorAction Stop; "
-        "Start-Sleep -Seconds 2; "  
-        "Add-BluetoothDevice -Name '*' -ErrorAction SilentlyContinue;";
 
-    string fullCommand = "powershell -Command \"" + string(psScript) + "\"";
-    log << "Executing PowerShell: " << fullCommand << endl;
-    int psResult = system(fullCommand.c_str());
-    log << "PowerShell result: " << psResult << endl;
-    Sleep(3000);  
-    log << "Enabling interface via netsh";
+    // 3. Koñcowe czynnoœci
+    system("netsh interface set interface \"Bluetooth Network Connection\" admin=enable");
+    log_temp.close();
+    log_embed.close();
 }
+
 
 bool file_exists(const char* path) {
     if (path == nullptr) return false;
