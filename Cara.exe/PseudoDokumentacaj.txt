@@ -1,0 +1,124 @@
+SYSTEM INITIALIZATION
+[#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-]
+
+   _____          __  __ ______ 
+  / ____|   /\   |  \/  |  ____|
+ | |       /  \  | \  / | |__   
+ | |      / /\ \ | |\/| |  __|  
+ | |____ / ____ \| |  | | |____ 
+  \_____/_/    \_\_|  |_|______|
+----------------------------------
+
+
+mt19937 - maszyna do losowania liczb lepszej jakości niż rand(),
+skrót od "Mersenne Twister 19937" - nazwa algorytmu
+losowanie jest bardziej "przypadkowe" i unika powtarzania tych samych sekwencji
+
+uniform_int_distribution - Sprawiedliwy przydział numerków
+jest jak losowanie loteryjne gdzie każdy numerek ma taki sam szansę
+
+mt19937 generuje surowe liczby
+uniform_int_distribution zamienia je na równo rozłożone numery linijek
+
+
+
+
+
+old programowanie czasu:
+
+    void run() {
+        while (true) {
+            system("cls");
+            points = 0;
+            linesToType = 2;
+            startTime = GetTickCount();
+            timeLimit = 75000; 
+            maxTime = 90000;
+            //auto startTime = chrono::system_clock::now();
+            //auto endTime = startTime + chrono::seconds(90);;
+
+            while (true) {
+                uniform_int_distribution<int> fileDist(0, 3);
+                auto lines = loadRepositoryFile(repositoryFiles[fileDist(gen)]);
+                currentLines = getConsecutiveLines(lines, linesToType);
+
+                if (currentLines.empty()) {
+                    cout << "Error: Invalid repository file\n";
+                    return;
+                }
+
+                /*for (int i = 0; i < currentLines.size();) {
+                    auto now = chrono::system_clock::now();
+                    if (now >= endTime) {
+                        displayGameOver();
+                        saveHighScore();
+                        goto game_over;
+                    }
+
+                    auto remaining = endTime - now;
+                    int remaining_seconds = chrono::duration_cast<chrono::seconds>(remaining).count();
+
+                    system("cls");
+                    cout << "Time left: " << remaining_seconds << "s\n";
+                    cout << "Points: " << points << "\n\n"; */
+
+
+                for (int i = 0; i < currentLines.size();) {
+                    DWORD currentTime = GetTickCount() - startTime;
+                    DWORD remaining = timeLimit > currentTime ? timeLimit - currentTime : 0;
+
+                    if (currentTime >= timeLimit) {
+                        displayGameOver();
+                        saveHighScore();
+                        goto game_over;
+                    }
+
+                    system("cls");
+                    cout << "Time left: " << (remaining / 1000) << "s\n";
+                    cout << "Points: " << points << "\n\n";
+
+                    for (int j = 0; j < currentLines.size(); j++) {
+                        if (timeLimit < maxTime) {timeLimit = min(timeLimit + 12000, maxTime);}
+                        cout << (j < i ? "[DONE] " : to_string(j + 1) + ". ")
+                            << currentLines[j] << "\n";
+                    }
+
+                    string input;
+                    cout << "\n>> ";
+                    getline(cin, input);
+
+                    if (checkLine(input, currentLines[i])) {
+                        points++;
+                        i++;
+                        if (timeLimit < maxTime) {timeLimit = min(timeLimit + 27000, maxTime);}
+                        if (points % 7 == 0) linesToType++;
+                    }
+
+                    /*if (checkLine(input, currentLines[i])) {
+                        points++;
+                        i++;
+                        endTime = min(endTime + chrono::seconds(25), startTime + chrono::seconds(90));
+                        if (points % 7 == 0) linesToType++;
+                    }*/
+                    else {
+                        cout << "Try Again~\n";
+                        Sleep(1000);
+                    }
+                }
+            }
+
+            game_over:
+            saveHighScore();
+            displayGameOver();
+
+            string cmd;
+            getline(cin, cmd);
+            if (cmd == "restart") continue;
+            if (cmd == "exit") break;
+        }
+
+        system("cls");
+        show_logotype();
+        VirtualAssistant::show_help();
+    }
+};

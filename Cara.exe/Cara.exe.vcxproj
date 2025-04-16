@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{7b9ff9f5-1cfc-426d-ae56-dce7e6d5f8e9}</ProjectGuid>
+    <RootNamespace>Caraexe</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <WindowsSDKDesktopARM64Support>true</WindowsSDKDesktopARM64Support>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseDebugLibraries Condition="'$(Configuration)'=='Debug'">true</UseDebugLibraries>
+    <UseDebugLibraries Condition="'$(Configuration)'=='Release'">false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup>
+    <ExecutablePath>$(ExecutablePath);$(VCInstallDir)bin\Host$(HostArch)\$(TargetArch);$(WindowsSDK_ExecutablePath)</ExecutablePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NOMINMAX;_HAS_STD_BYTE=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;kernel32.lib;user32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateManifest>false</GenerateManifest>
+      <AllowIsolation>false</AllowIsolation>
+    </Link>
+    <PostBuildEvent>
+      <Command>if exist "$(ProjectDir)config\config.txt" (
+    xcopy /Y /I "$(ProjectDir)config\config.txt" "$(OutDir)"
+) else (
+    echo Plik config.txt nie istnieje w $(ProjectDir)config\
+)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <!-- Platform-specific optimizations -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <Optimization>MaxSpeed</Optimization>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="maincore.cpp" />
+    <ClCompile Include="load.cpp" />
+    <ClCompile Include="Minigame.cpp" />
+    <ClCompile Include="VirtualAssistant.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="load.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="utils.h" />
+    <ClInclude Include="VirtualAssistant.h" />
+    <ClInclude Include="Minigame.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Mono\etc\EmbedRuntime\mono.bat" />
+    <None Include="tools\devcon.exe" />
+    <Text Include="Data\assistant.log" />
+    <Text Include="Data\fileVerify1.txt" />
+    <Text Include="Data\fileVerify2.txt" />
+    <Text Include="Data\Mono\etc\EmbedRuntime\airplane_log.txt" />
+    <Text Include="Data\Mono\etc\EmbedRuntime\air_plane_log.txt" />
+    <Text Include="Data\Mono\etc\EmbedRuntime\bluetooth_log.txt" />
+    <Text Include="Data\Mono\etc\EmbedRuntime\mono.txt" />
+    <Text Include="Data\vol1.txt" />
+    <Text Include="Data\vol2.txt" />
+    <Text Include="Minigame\*.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Data\Mono\etc\mono\scripts\c1337.mp3" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

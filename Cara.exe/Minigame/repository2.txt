@@ -1,0 +1,18 @@
+vector<string> used_sayings; mt19937 gen; {
+ifstream file(path.c_str());
+if (!file.is_open()) {
+cout << "Error:ax00002137 (Cannot open file) " << path << endl;
+::exit(1);}
+while (getline(file, line)) {
+if (!line.empty()) {lines.push_back(line);
+return lines;
+void rotate_file(const string& filename, const vector<string>& source) {
+string path = "Data/" + filename;
+vector<string> lines;
+ifstream in(path);
+string line;
+while (getline(in, line)) {
+if (!line.empty()) lines.push_back(line);
+bool all_used = all_of(source.begin()
+source.end(), [&](const string& s) {
+return find(lines.begin(), lines.end(), s) != lines.end();
