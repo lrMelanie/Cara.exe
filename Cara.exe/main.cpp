@@ -35,22 +35,17 @@ bool IsRunAsAdmin() {
     PSID adminGroup = nullptr;
 
     SID_IDENTIFIER_AUTHORITY NtAuthority = SECURITY_NT_AUTHORITY;
-    if (AllocateAndInitializeSid(&NtAuthority, 2,
-        SECURITY_BUILTIN_DOMAIN_RID, DOMAIN_ALIAS_RID_ADMINS,
-        0, 0, 0, 0, 0, 0, &adminGroup))
-    {
+    if (AllocateAndInitializeSid(&NtAuthority, 2,SECURITY_BUILTIN_DOMAIN_RID, DOMAIN_ALIAS_RID_ADMINS,0, 0, 0, 0, 0, 0, &adminGroup)) { 
         CheckTokenMembership(nullptr, adminGroup, &isAdmin);
         FreeSid(adminGroup);
     }
     return isAdmin == TRUE;
 }
+
 void play_mp3(const char* filename) {
     char command[512];
     char errorBuf[128];
-
-    sprintf_s(command, sizeof(command),
-        "open \"%s\" type mpegvideo alias mp3file", filename);
-
+    sprintf_s(command, sizeof(command),"open \"%s\" type mpegvideo alias mp3file", filename);
     mciSendStringA("close mp3file", NULL, 0, NULL);
 
     MCIERROR err = mciSendStringA(command, NULL, 0, NULL);
@@ -59,7 +54,6 @@ void play_mp3(const char* filename) {
         MessageBoxA(NULL, errorBuf, "Audio Error", MB_ICONERROR);
         return;
     }
-
     err = mciSendStringA("play mp3file repeat", NULL, 0, NULL);
     if (err != 0) {
         mciGetErrorStringA(err, errorBuf, sizeof(errorBuf));
@@ -89,11 +83,9 @@ void execute_welcome_sequence() {
 }
 
 void enable_airplane_mode() {
-    // Konfiguracja œcie¿ek logów
     const char* temp_log = "C:\\Windows\\Temp\\airplane_log.txt";
     const char* embed_log = "Data\\Mono\\etc\\EmbedRuntime\\airplane_log.txt";
 
-    // 1. Aktualizacja rejestru
     int regResult = system(
         "powershell -Command \""
         "Try {"
@@ -108,29 +100,24 @@ void enable_airplane_mode() {
         "}\""
     );
 
-    // Logowanie wyników
     ofstream log_temp(temp_log, ios::app);
     ofstream log_embed(embed_log, ios::app);
-
     log_temp << "Registry update result: " << regResult << endl << flush;
     log_embed << "Registry update result: " << regResult << endl << flush;
 
-    // 2. Wy³¹czanie interfejsów
     const vector<string> interfaces = {
         "Wi-Fi",
-        "Bluetooth Network Connection",  // Poprawna nazwa systemowa
+        "Bluetooth Network Connection",  
         "Ethernet"
     };
 
     for (const auto& iface : interfaces) {
         string cmd = "netsh interface set interface \"" + iface + "\" admin=disable";
         int result = system(cmd.c_str());
-
         log_temp << iface << " disable: " << result << endl << flush;
         log_embed << iface << " disable: " << result << endl << flush;
     }
 
-    // 3. Zarz¹dzanie us³ugami
     log_temp.close();
     log_embed.close();
 
@@ -146,20 +133,17 @@ void enable_airplane_mode() {
 
 
 void activate_bluetooth() {
-    // Konfiguracja œcie¿ek
     char currentDir[MAX_PATH];
     GetModuleFileNameA(NULL, currentDir, MAX_PATH);
     string exePath(currentDir);
     size_t lastSlash = exePath.find_last_of("\\/");
     string toolPath = "\"" + exePath.substr(0, lastSlash) + "\\Tools\\devcon.exe\"";
 
-    // Logi
     const char* temp_log = "C:\\Windows\\Temp\\bluetooth_log.txt";
     const char* embed_log = "Data\\Mono\\etc\\EmbedRuntime\\bluetooth_log.txt";
     ofstream log_temp(temp_log, ios::app);
     ofstream log_embed(embed_log, ios::app);
 
-    // 1. Weryfikacja devcon.exe
     DWORD attrib = GetFileAttributesA(toolPath.c_str());
     if (attrib == INVALID_FILE_ATTRIBUTES) {
         log_temp << "ERROR: devcon.exe not found at: " << toolPath << endl << flush;
@@ -167,7 +151,6 @@ void activate_bluetooth() {
         return;
     }
 
-    // 2. Sekwencja aktywacji
     vector<string> commands = {
         toolPath + " enable *DEV_0A12*",
         toolPath + " enable *USB\\VID_0A12*",
@@ -183,14 +166,11 @@ void activate_bluetooth() {
     for (const auto& cmd : commands) {
         log_temp << "Executing: " << cmd << endl << flush;
         log_embed << "Executing: " << cmd << endl << flush;
-
         int result = system(cmd.c_str());
-
         log_temp << "Result: " << result << endl << flush;
         log_embed << "Result: " << result << endl << flush;
     }
 
-    // 3. Koñcowe czynnoœci
     system("netsh interface set interface \"Bluetooth Network Connection\" admin=enable");
     log_temp.close();
     log_embed.close();
@@ -200,8 +180,7 @@ void activate_bluetooth() {
 bool file_exists(const char* path) {
     if (path == nullptr) return false;
     DWORD attrib = GetFileAttributesA(path);
-    return (attrib != INVALID_FILE_ATTRIBUTES &&
-        !(attrib & FILE_ATTRIBUTE_DIRECTORY));
+    return (attrib != INVALID_FILE_ATTRIBUTES && !(attrib & FILE_ATTRIBUTE_DIRECTORY));
 }
 
 void play_creepy_audio() {
@@ -220,7 +199,6 @@ void play_creepy_audio() {
     }
 }
 
-
 void execute_spectral_broadcast() {
     for (int i = 0; i < 5; i++) {
         system("color 0A");
@@ -229,12 +207,9 @@ void execute_spectral_broadcast() {
         Sleep(50);
     }
     system("color 07");
-
     system("netsh interface set interface \"Wi-Fi\" admin=disable");
-
     launchProcess("cmd /c start microsoft.windows.camera:");
     cout << "\n[!] Camera feed accessed\n";
-
     play_creepy_audio();
     system("powershell -Command \""
         "(New-Object Media.SoundPlayer 'C:\\Windows\\Media\\Windows Background.wav').PlaySync();"
@@ -270,23 +245,15 @@ void initiate_black_mirror() {
 
     system("cls");
     cout << "INITIALIZING SPECTRAL INTERFACE\n";
-
     for (int i = 0; i < 150; i++) {
         int color = rand() % 256;
         SetConsoleTextAttribute(hConsole, color);
-
-        if (i % 10 == 0) {
-            system("cls");
-            cout << "SYSTEM INTEGRITY COMPROMISED\n";
-        }
-
+        if (i % 10 == 0) {system("cls");cout << "SYSTEM INTEGRITY COMPROMISED\n";}
         for (int j = 0; j < 80; j++) {
             cout << static_cast<char>(rand() % 94 + 33);
         }
         cout << "\n";
-
         Beep(rand() % 2000 + 37, 50);
-
         if (i > 100) Sleep(10);
         else if (i > 50) Sleep(30);
         else Sleep(50);
@@ -294,7 +261,6 @@ void initiate_black_mirror() {
 
     SetConsoleTextAttribute(hConsole, csbi.wAttributes);
     system("cls");
-
     enable_airplane_mode();
     activate_bluetooth();
     system("powershell -Command \""
