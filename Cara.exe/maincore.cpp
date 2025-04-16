@@ -29,20 +29,11 @@ int APIENTRY WinMain(
     _In_ int nCmdShow)
 {
     srand(static_cast<unsigned int>(time(nullptr)));
-    if (!IsRunAsAdmin()) {
-        MessageBoxW(nullptr, L"Uruchom jako administrator!", L"Błąd", MB_ICONERROR);
-        return 1;
-    }
 
+    if (!IsRunAsAdmin()) {MessageBoxW(nullptr, L"Uruchom jako administrator!", L"Błąd", MB_ICONERROR); return 1;}
     AllocConsole();
     FILE* fpOut, * fpIn;
-
-    if (freopen_s(&fpOut, "CONOUT$", "w", stdout) != 0 ||
-        freopen_s(&fpIn, "CONIN$", "r", stdin) != 0)
-    {
-        MessageBoxW(nullptr, L"Błąd inicjalizacji konsoli!", L"Error", MB_ICONERROR);
-        return 1;
-    }
+    if (freopen_s(&fpOut, "CONOUT$", "w", stdout) != 0 || freopen_s(&fpIn, "CONIN$", "r", stdin) != 0) {MessageBoxW(nullptr, L"Błąd inicjalizacji konsoli!", L"Error", MB_ICONERROR);return 1;}
 
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
@@ -55,14 +46,13 @@ int APIENTRY WinMain(
 
     Sleep(600);
     assistant.print_slowly( "Hello! I'm Cara and I am your virtual assistant.\n");
-    Sleep(600);
+    Sleep(600); 
     assistant.show_help();
 
     string command;
     while (true) {
         std::cout << ">> ";
         getline(cin, command);
-
         if (command == "WELCOMETOTHEGAME") { execute_welcome_sequence(); assistant.log("You such a idiot"); }
         else if (command.rfind("schedule ", 0) == 0) { assistant.process_schedule_command(command.substr(9)); }
         else if (command == "schedule") { assistant.show_schedule_help(); assistant.log("Generated schedule help"); }
