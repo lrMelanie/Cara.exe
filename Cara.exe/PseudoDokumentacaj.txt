@@ -8,22 +8,153 @@ SYSTEM INITIALIZATION
  | |____ / ____ \| |  | | |____ 
   \_____/_/    \_\_|  |_|______|
 ----------------------------------
+>/Witaj w pseudo dokumentacji! Miejsce notatek, zbiór rzeczy niepowiązanych. Jeśli chcesz przejść do informacji, sprawdź plik 'Dokumentacja.txt'.
+
+>/Lista_nawwiazan
+- Ted
+- Killer
+- Chłopaki nie płaczą
+- Welcome To The Game
+- Waiting Room
+- Dead Signal
+- Poranek Kojota
+- Matrix (i guess)
+- Resident Evil
+- Underworld
+- Non-Stop-Pop FM
 
 
-mt19937 - maszyna do losowania liczb lepszej jakości niż rand(),
-skrót od "Mersenne Twister 19937" - nazwa algorytmu
-losowanie jest bardziej "przypadkowe" i unika powtarzania tych samych sekwencji
+>/PD_Open
 
-uniform_int_distribution - Sprawiedliwy przydział numerków
-jest jak losowanie loteryjne gdzie każdy numerek ma taki sam szansę
+>/Bałagan i zlepek pseudo dokumentacji własnych i pisanych przez AI (ludzie są leniwi co do dokumentacji)
 
-mt19937 generuje surowe liczby
-uniform_int_distribution zamienia je na równo rozłożone numery linijek
+>/Skrótowce:
+*-------------------------
+*mt19937 - maszyna do losowania liczb lepszej jakości niż rand(),
+*skrót od "Mersenne Twister 19937" - nazwa algorytmu
+*losowanie jest bardziej "przypadkowe" i unika powtarzania tych samych sekwencji
+*
+*uniform_int_distribution - Sprawiedliwy przydział numerków
+*jest jak losowanie loteryjne gdzie każdy numerek ma taki sam szansę
+*
+*mt19937 generuje surowe liczby
+*uniform_int_distribution zamienia je na równo rozłożone numery linijek
+*-------------------------
 
 
+>/Pierwsza wersja dokumencji:
+*-------------------------
+*Plik Manifest (Cara.exe.manifest) "Dowód osobisty programu" (manifest my a**)
+*W skrócie
+*Mówi Windowsowi:
+*"Hej, potrzebuję uprawnień administratora i używam nowoczesnego wyglądu okienek". (to ostatnie to fake ale chuj tam)
+*Bez tego niektóre funkcje (np. wyłączanie Wi-Fi) nie zadziałają, bo Windows blokuje je dla zwykłych programów.
+*
+*
+*Główny Program (main.cpp) (Teoretycznie mózg, praktycznie półmózg?)
+*Kluczowe funkcje:
+*- IsRunAsAdmin()
+*Sprawdza czy program został uruchomiony jako administrator (jak przy instalacji gry).
+*
+*- play_mp3()
+*Odtwarza pliki dźwiękowe (np. creepy audio) używając systemowego odtwarzacza.
+*
+*- enable_airplane_mode()
+*"Kokaina w nosie lecimy w samolocie"
+*Modyfikuje rejestr systemowy, by oszukać Windows, że jest w trybie samolotowym
+*Wyłącza Wi-Fi/Bluetooth przez netsh (narzędzie sieciowe) (trzeba to w końcu wyj*bać!)
+*Zapisuje logi do C:\Windows\Temp\airplane_log.txt
+*
+*- activate_bluetooth()
+*Włącza Bluetooth poprzez:
+*Narzędzie devcon.exe (sterowanie urządzeniami) (wk*rwia mnie tak samo jak WinRT)
+*PowerShell (restart usług systemowych)
+*
+*- initiate_black_mirror()
+*Efekt "Matrixa" (Losowe miganie konsoli kolorami, generowanie szumu tekstowego) (czy to dalej matrix?)
+*Włącza tryb samolotowy i Bluetooth po zakończeniu
+*
+*- execute_welcome_sequence()
+*Sekwencja startowa:
+*Efekty wizualne
+*Uruchomienie minigry
+*Otwarcie Rickrolla w przeglądarce (no troszkę po ch*ju działa)
+*
+*
+*Virtual Assistant (VirtualAssistant.h/cpp) (pomocnik z wodogłowiem)
+*Cechy:
+*- give_motto() i say()
+*Losuje i wyświetla motywacyjne cytaty z plików w folderze Data/.
+*Może dać podpowiedź do ukrytych funkcji/komend (ch*j że tylko motto() daje, nie say() )
+*
+*- reminderDaemon()
+*Działa w tle jak budzik:
+*Sprawdza harmonogram co 1 sekundę
+*Wyświetla przypomnienia (Trzeba to ulepszyć)
+*Loguje wszystko do assistant.log
+*
+*- print_slowly()
+*Wyświetla tekst literka po literce (jak pisanie na klawiaturze) (podobno tym wolniej pisze, tym bardziej staje ch*j osobom podziwiającym)
+*
+*- handle_query()
+*Prosta "sztuczna inteligencja" – odpowiada losowymi frazami na pytania. (Prawdopodobnie dalej nieaktywne)
+*
+*
+*Minigiera (Minigame.h/cpp) (może zamiast grać chcesz się maleńka przejechać solarisem po jaworznickich osiedlach? Kanary same wychodzą z autobusu haha)
+*Zasady:
+*Gracz musi przepisywać losowe linijki z plików w folderze Minigame/.
+*Za każdą poprawną odpowiedź dostaje +15 sekund i punkty.
+*Co 7 punktów zwiększa się liczba linii do przepisania.
+*Jeśli czas się skończy – gracz widzi wynik i może zagrać ponownie.
+*
+*Ciekawostki:
+*Co 137 uruchomień otwiera ustawienia kamery (miało być do 1337, ale to za dużo. Może się zrobi szanse po prostu niskie)
+*
+*Zapisywanie najlepszego wyniku do hscore.txt (Proszę nie cheatować!)
+*
+*
+*Interakcja z Systemem 
+*Kluczowe techniki:
+*PowerShell w C++
+*Program uruchamia komendy systemowe np.: cpp, copy
+*system("netsh interface set interface \"Wi-Fi\" admin=disable");
+*Tak jakby ktoś ręcznie wpisywał to w konsoli.
+*
+*Windows API
+*Funkcje takie jak GetFileAttributesA czy ShellExecute pozwalają na:
+*Sprawdzanie istnienia plików
+*Uruchamianie innych programów
+*Kontrolę nad konsolą
+*Wielowątkowość
+*Wątek reminderDaemon działa cały czas w tle, nawet gdy użytkownik nie wpisuje komend.
+*
+*Bezpieczeństwo i Logowanie (My Little BlackBox~)
+*Logi:
+*Program zapisuje wszystkie ważne zdarzenia do plików w C:\Windows\Temp\.
+*
+*Wyjątki:
+*Każda operacja ma bloki try/catch by zapobiegać crashom.
+*
+*Autoryzacja:
+*Sprawdzanie uprawnień administratora na starcie.
+*
+*
+*Podsumowanie (choć ch*j wie czy to ktoś czytać będzie)
+*Projekt Cara.exe to wielomodułowe narzędzie łączące:
+*Funkcje systemowe (zarządzanie siecią, usługami)
+*Elementy grywalizacji (minigra z rankingiem)
+*Interfejs użytkownika (wirtualny asystent z AI)
+*Zaawansowane techniki programowania (wątki, API Windows, integracja z PowerShell)
+*Kod demonstruje praktyczne zastosowanie:
+*Obsługi wielowątkowości
+*Integracji z systemem operacyjnym
+*Prostej sztucznej inteligencji
+*Mechanik gier komputerowych
+*Wszystko w jednym spójnym projekcie utrzymanym w konwencji "technologicznego horroru" (efekty dźwiękowe, losowe otwieranie stron) (potrzeba więcej efektów mój panie)
+*-------------------------
 
 
-
+>/show old_clock
 old programowanie czasu:
 
     void run() {
@@ -122,3 +253,268 @@ old programowanie czasu:
         VirtualAssistant::show_help();
     }
 };
+
+
+
+
+
+Dokumentacja robiona przy pomocy własnej i AI (jeśli ktoś się odnajdzie tu, współczuje. Śmietnik z którego wstępna wersja publicznej dokumentacji została napisana)
+
+
+Projekt łączy funkcje asystenta z elementami "hakerskiego" humoru (efekty wizualne, modyfikacje systemowe). Kluczowe komponenty to zarządzanie harmonogramem, interakcja z systemem Windows poprzez API i powłokę, oraz minigra. Kod wymaga uprawnień administratora ze względu na inwazyjne operacje, co może budzić zastrzeżenia bezpieczeństwa.
+
+Szczegółowe wyjaśnienie projektu "Wirtualny Asystent Cara"
+Struktura plików i główne komponenty:
+maincore.cpp – Główny punkt wejścia aplikacji (WinMain).
+
+Cara.exe.manifest – Manifest wymagający uprawnień administratora.
+
+main.cpp – Implementacja funkcji systemowych i pomocniczych.
+
+VirtualAssistant(.h/.cpp) – Klasa zarządzająca funkcjami asystenta.
+
+Minigame(.h/.cpp) – Klasa gry pochodna od VirtualAssistant.
+
+utils.h – Narzędzia do uruchamiania procesów.
+
+load(.h/.cpp) – Ekran ładowania i logo.
+
+Kluczowe biblioteki i ich zastosowanie:
+Windows.h – Dostęp do API Windows (konsola, procesy, rejestr).
+
+mmsystem.h – Odtwarzanie dźwięków (MP3, Beep).
+
+fstream – Operacje na plikach (logi, konfiguracje).
+
+chrono/random – Zarządzanie czasem i losowość (gra, przypomnienia).
+
+winhttp.h – Komunikacja HTTP (funkcje "phantom_protocol").
+
+Klasy i ich odpowiedzialność:
+1. VirtualAssistant (VirtualAssistant.h/cpp)
+Cel: Zarządzanie podstawowymi funkcjami asystenta.
+
+Cechy:
+
+Wątki: reminderDaemon() sprawdza przypomnienia co sekundę i emuluje klawisz NumLock po naciśnięciu Scroll Lock.
+
+Logowanie: Zapis działań do assistant.log.
+
+Scheduler: Dodawanie/Usuwanie zdarzeń z użyciem vector<pair<time_t, string>> schedule.
+
+Motto/Sayings: Losowanie sentencji z plików vol1.txt i vol2.txt, rotacja po wykorzystaniu wszystkich.
+
+Metody wirtualne: Brak, ale klasa Minigame dziedziczy po niej.
+
+2. Minigame (Minigame.h/cpp)
+Cel: Implementacja gry w szybkie pisanie.
+
+Mechanika:
+
+Losowe linie z plików repository*.txt.
+
+Limit czasu (90s), punkty za poprawne odpowiedzi.
+
+Zapis najlepszego wyniku (hscore.txt).
+
+Triki: Otwieranie ustawień kamery (ms-settings:privacy-webcam).
+
+Główne funkcje i komendy:
+maincore.cpp (WinMain)
+WinMain: Punkt startowy dla aplikacji Windows.
+
+IsRunAsAdmin(): Wymaga uprawnień administratora (ze względu na modyfikacje systemowe).
+
+AllocConsole(): Tworzy konsolę dla interfejsu tekstowego.
+
+Komendy:
+
+WELCOMETOTHEGAME: Uruchamia sekwencję execute_welcome_sequence() (gra, dźwięki, URL RickRoll).
+
+schedule: Zarządzanie harmonogramem (dodaj/listuj/usuń).
+
+A.L.I.V.E: Kalibracja audio (play_creepy_audio()) i wyłączenie Wi-Fi.
+
+HELP-ME: Uruchamia "phantom_protocol" (losowe URL, usuwanie logów po 37s).
+
+D0N'T-L00K-B3H1ND-Y0U: Efekt wizualny "black mirror" i włączenie trybu samolotowego.
+
+main.cpp
+enable_airplane_mode():
+
+Wyłącza interfejsy sieciowe (Wi-Fi, Bluetooth, Ethernet) via netsh.
+
+Modyfikuje rejestr (HKLM\...\SystemRadioState).
+
+Loguje wyniki do airplane_log.txt.
+
+activate_bluetooth(): Włącza Bluetooth przez devcon.exe (narzędzie Microsoft).
+
+execute_spectral_broadcast(): Efekty wizualne, odtwarzanie dźwięku, zapis fałszywych współrzędnych GPS.
+
+VirtualAssistant.cpp
+print_slowly(): Animacja "pisania" tekstu (opóźnienie między znakami).
+
+get_ai_response(): Losowa odpowiedź z predefiniowanej listy (brak AI).
+
+exit(): Wyłączenie systemu po potwierdzeniu (shutdown /s /t 10).
+
+Minigame.cpp
+run(): Główna pętla gry z czasomierzem i punktacją.
+
+checkLine(): Weryfikacja poprawności wprowadzonego tekstu.
+
+loadHighScore(): Wczytuje najlepszy wynik z pliku.
+
+Użycie powłoki (shell):
+netsh: Modyfikacja interfejsów sieciowych (disable/enable).
+
+powershell:
+
+Zmiana polityki wykonawczej (Set-ExecutionPolicy).
+
+Zarządzanie usługami (Stop-Service, Set-Service).
+
+Odtwarzanie dźwięków (Media.SoundPlayer).
+
+devcon.exe: Włączanie/wyłączanie urządzeń Bluetooth.
+
+start: Otwieranie URL (RickRoll) lub aplikacji (kamera).
+
+Kontrowersyjne elementy:
+Modyfikacje systemowe: Wyłączanie sieci, zmiana rejestru, wyłączenie systemu.
+
+Phantom Protocol: Generowanie losowych żądań HTTP (potencjalnie podejrzane).
+
+Inwazyjne logowanie: Zapis logów w C:\Windows\Temp\.
+
+Triki: Otwieranie ustawień prywatności kamery, emulacja klawiszy.
+
+
+
+1. Dyrektywy #pragma comment
+Cel i działanie:
+#pragma comment(lib, "nazwa_biblioteki") – automatycznie linkuje biblioteki (.lib) do projektu podczas kompilacji.
+
+Przykłady w kodzie:
+
+cpp
+#pragma comment(lib, "winmm.lib")  // Biblioteka multimedialna (odtwarzanie MP3)
+#pragma comment(lib, "kernel32.lib") // API systemowe (procesy, pamięć)
+#pragma comment(lib, "user32.lib")   // GUI (okna, komunikaty)
+Dlaczego to użyto?
+Uniknięcie ręcznej konfiguracji w IDE – kompilator sam dodaje biblioteki do pliku wykonywalnego.
+
+Manifest zależności:
+cpp
+#pragma comment(linker, "/manifestdependency:...")
+Określa wersję Common Controls (wizualne elementy Windows).
+
+Zapobiega "przyciemnieniu" GUI w nowszych systemach (np. Windows 10/11).
+
+2. APIENTRY WinMain vs int main()
+Różnice architektoniczne:
+int main() – standardowy punkt wejścia dla aplikacji konsolowych.
+
+WinMain – entry point dla aplikacji Windows API (GUI), nawet jeśli używa konsoli.
+
+cpp
+int APIENTRY WinMain(
+  HINSTANCE hInstance,      // Handle instancji aplikacji
+  HINSTANCE hPrevInstance,  // Przestarzałe (zawsze NULL)
+  LPSTR lpCmdLine,          // Argumenty wiersza poleceń
+  int nCmdShow)             // Tryb wyświetlania okna
+APIENTRY – makro definiujące konwencję wywołania jako __stdcall (wymagane przez WinAPI).
+
+Dlaczego WinMain?
+Aplikacja domyślnie nie ma konsoli (to GUI app), ale AllocConsole() tworzy ją dynamicznie.
+
+Umożliwia dostęp do pełni WinAPI (np. komunikaty MessageBox, zarządzanie procesami).
+
+3. Struktura kodu i kluczowe mechanizmy
+Inicjalizacja konsoli:
+cpp
+AllocConsole();  // Tworzy konsolę
+freopen_s(&fpOut, "CONOUT$", "w", stdout); // Przekierowuje stdout
+SetConsoleOutputCP(CP_UTF8); // Obsługa znaków specjalnych
+Cel: Emulacja aplikacji konsolowej w projekcie GUI.
+
+Wymaganie uprawnień administratorskich:
+Manifest (Cara.exe.manifest):
+
+xml
+<requestedExecutionLevel level="requireAdministrator"/>
+Funkcja IsRunAsAdmin(): Sprawdza członkostwo w grupie "Administrators" przez CheckTokenMembership.
+
+System logowania:
+Klasa VirtualAssistant zapisuje działania do assistant.log z sygnaturą czasową:
+
+cpp
+logFile << put_time(&tm_now, "%Y-%m-%d %H:%M:%S") << " | " << action << endl;
+Wątki i synchronizacja:
+Wątek reminderDaemon (w klasie VirtualAssistant):
+
+cpp
+std::atomic<bool> reminderActive{false}; // Kontrola cyklu życia wątku
+std::thread reminderThread;
+Zadanie: Sprawdza przypomnienia co 1 sekundę i emuluje NumLock po wykryciu Scroll Lock.
+
+4. Nietypowe konstrukcje językowe
+Obsługa błędów z mciSendString:
+cpp
+MCIERROR err = mciSendStringA("play mp3file repeat", NULL, 0, NULL);
+if (err != 0) {
+    mciGetErrorStringA(err, errorBuf, sizeof(errorBuf));
+    MessageBoxA(NULL, errorBuf, "Audio Error", MB_ICONERROR);
+}
+mciSendString – API do sterowania urządzeniami multimedialnymi (np. odtwarzaczem MP3).
+
+Dlaczego? Niska kontrola nad błędami w porównaniu do nowoczesnych bibliotek (np. Bass.dll).
+
+Dynamiczne generowanie poleceń:
+cpp
+char command[512];
+sprintf_s(command, "open \"%s\" type mpegvideo alias mp3file", filename);
+Ryzyko: Potencjalne przepełnienie bufora (stąd sprintf_s zamiast sprintf).
+
+5. Interakcja z systemem operacyjnym
+Modyfikacje rejestru:
+Funkcja enable_airplane_mode zmienia klucz:
+
+cpp
+HKLM\SYSTEM\CurrentControlSet\Control\RadioManagement\SystemRadioState
+Cel: Wymuszenie trybu samolotowego na poziomie systemowym.
+
+Wywołania PowerShell:
+cpp
+system("powershell -Command \"Set-ExecutionPolicy RemoteSigned...\"");
+Zastosowanie: Zmiana polityki wykonywania skryptów PS (potencjalnie niebezpieczne!).
+
+Manipulacja interfejsami sieciowymi:
+cpp
+system("netsh interface set interface \"Wi-Fi\" admin=disable");
+Efekt: Wyłącza karty sieciowe (Wi-Fi, Ethernet) przez powłokę.
+
+6. Dziedziczenie w klasie Minigame
+cpp
+class Minigame : public VirtualAssistant {
+    // Dziedziczy: logFile, gen, schedule, itd.
+    int points; // Nowe pole specyficzne dla gry
+};
+Zaleta: Ponowne wykorzystanie mechanizmów bazowych (np. print_slowly(), load_file()).
+
+Metoda run(): Implementuje główną pętlę gry z użyciem <chrono> do pomiaru czasu.
+
+7. Bezpieczeństwo i kontrowersje
+Potencjalne zagrożenia:
+system("shutdown /s /t 10") – wyłącza komputer bez potwierdzenia (w VirtualAssistant::exit()).
+
+launchProcess("cmd /c start ...") – otwiera dowolne URL/procesy (możliwość nadużycia).
+
+Triki programistyczne:
+GetAsyncKeyState(VK_SCROLL) – wykrywa naciśnięcie Scroll Lock w tle.
+
+SendInput – emuluje naciskanie klawiszy (np. NumLock).
+
+Podsumowanie techniczne
+Kod wykorzystuje nisko poziomowe API Windows do osiągnięcia funkcjonalności "hakerskiego asystenta". Struktura jest modularna (klasy VirtualAssistant, Minigame), ale brakuje współczesnych praktyk (np. obsługa wyjątków, RAII). Użycie WinMain i dyrektyw #pragma pokazuje silne powiązanie z platformą Windows, co ogranicza przenośność na inne systemy. Projekt łączy elementy edukacyjne (np. wielowątkowość) z kontrowersyjnymi technikami (modyfikacje systemowe), co wymaga ostrożności przy uruchomieniu.

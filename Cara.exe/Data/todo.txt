@@ -6,25 +6,29 @@
 6. Podwójna weryfikacja na temat wyjœcia z programu (Yes + No == good   Yes + Yes  == evil reset) [DONE] 
 
 7. Dodaæ wiêcej minigier
-8. Podpi¹æ go pod dobre API by mog³o to coœ gadaæ (dobra nie to coœ. Wystarczy ¿e dla mnie to jest ju¿ coœ z¿ytego nieco)
+8. Podpi¹æ go pod dobre API by mog³o to coœ gadaæ (dobra nie "to coœ" Wystarczy ¿e dla mnie to jest ju¿ coœ z¿ytego nieco)
 9. Dodaæ mo¿liwoœæ wybierania poziomu trudnoœci dla Coderunnera (i uporz¹dkowaæ repository 1-4 easy-hard czy coœ. I lvl random korzystaj¹cy z wszystkich repository)
 10. Wiêcej horrorów
 11. Muzyka podczas minigier
-12. Zrobiæ komednê by aktywowa³o mono.bat samoistnie taki klucz bezpieczeñstwa
+12. Zrobiæ komende by aktywowa³o mono.bat samoistnie taki klucz bezpieczeñstwa
 
 13. Charakter Cara.exe - nieco chamski i obojêtny
-14. Dodaæ wiêcej Mot i czarnego humoru
-15. Przerobienie minigame.cpp na interace który odpala inne minigry króe bêd¹ w osobnych plikach
+14. Dodaæ wiêcej Mot i czarnego humoru(na stan 04.21.2025 = 26:85)
+15. Przerobienie minigame.cpp na interface który odpala inne minigry które bêd¹ w osobnych plikach
 16. Autostart programu
-17. Inne fukcje typu pogoda czy coœ wci¹¿ z kalendarzem albo timer
+17. Inne funkcje typu pogoda czy coœ wci¹¿ z kalendarzem albo timer
 18. Uporz¹dkowanie VirtualAssistant.cpp i mo¿liwe podzielenie go na kolejn¹ matrioszkê jak prawie zosta³ podzielony maincore.cpp na utils.h oraz main.cpp
+
+19. Poprawiæ dokumentacje (powiedzmy)
+20. Logowanie ?
+21. 
 
 
 opcjonalne:
-- Ogarn¹æ jak dzia³aj¹ pliki DLL zamkn¹æ projekt w pliku DLL i ¿eby projekt dzia³a³ se tak o w powietrzu bez go³ego pliku (Assemble.dll) 
-- Zrobiæ lepsze logo [FUCK]
-- Pomyœleæ czy da siê coœ wiêcej uzyskaæ przy pomocy technologii u¿ywanej przy projekcje A.M.E.v3 (nie zapomnia³em o tobie) 
-- weezer
+- Ogarn¹æ jak dzia³aj¹ pliki DLL zamkn¹æ projekt w pliku DLL i ¿eby projekt dzia³a³ se tak o w powietrzu bez go³ego pliku (Assemble.dll)[Too Lazy] 
+- Zrobiæ lepsze logo 
+- Pomyœleæ czy da siê coœ wiêcej uzyskaæ przy pomocy technologii u¿ywanej przy projekcje A.M.E.v3/po³¹czyæ jakoœ te dwa projekty z sob¹ 
+- weezer [oh my god]
 
  _______  _______  _______  _______         _         _______  _______  _______ 
 (  ____ \(  ___  )(  ____ )(  ___  )       ( )       (  ___  )(       )(  ____ \
