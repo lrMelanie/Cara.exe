@@ -10,37 +10,39 @@
 #include <sstream>
 #include <algorithm>
 
+using namespace std;
+
 class VirtualAssistant {
 protected:
-    std::vector<std::string> vol1;
-    std::vector<std::string> vol2;
-    std::vector<std::string> used_mottos;
-    std::vector<std::string> used_sayings;
-    std::vector<std::pair<time_t, std::string>> schedule;
-    std::atomic<bool> reminderActive{ false };
-    std::thread reminderThread;
-    std::ofstream logFile;
-    std::mt19937 gen;
+    vector<string> vol1;
+    vector<string> vol2;
+    vector<string> used_mottos;
+    vector<string> used_sayings;
+    vector<pair<time_t, string>> schedule;
+    atomic<bool> reminderActive{ false };
+    thread reminderThread;
+    ofstream logFile;
+    mt19937 gen;
 
     void reminderDaemon();
-    std::vector<std::string> load_file(const std::string& path);
+    vector<string> load_file(const string& path);
     void processMottoFile();
     void processSayingFile();
 
 public:
     VirtualAssistant();
     virtual ~VirtualAssistant();
-    void log(const std::string& action);
+    void log(const string& action);
     void give_motto();
     void say();
-    void add_event(const std::string& datetime, const std::string& event);
+    void add_event(const string& datetime, const string& event);
     void show_help();
     bool exit();
-    void process_schedule_command(const std::string& args);
+    void process_schedule_command(const string& args);
     void list_events();
     void remove_event(int index);
     void show_schedule_help();
-    void print_slowly(const std::string& text, unsigned int delay = 30);
-    void handle_query(const std::string& query);
-    std::string get_ai_response(const std::string& query);
+    void print_slowly(const string& text, unsigned int delay = 30);
+    void handle_query(const string& query);
+    string get_ai_response(const string& query);
 };

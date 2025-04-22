@@ -5,18 +5,20 @@
 #include <string>
 #include <vector>
 
+using namespace std;
+
 class Minigame : public VirtualAssistant {
     int points;
     int highScore;
     int linesToType;
-    std::vector<std::string> repositoryFiles;
-    std::vector<std::string> currentLines;
+    vector<string> repositoryFiles;
+    vector<string> currentLines;
 
     void loadHighScore();
     void saveHighScore();
-    std::vector<std::string> loadRepositoryFile(const std::string& path);
-    std::vector<std::string> getConsecutiveLines(const std::vector<std::string>& lines, int count);
-    bool checkLine(const std::string& input, const std::string& target);
+    vector<string> loadRepositoryFile(const string& path);
+    vector<string> getConsecutiveLines(const vector<string>& lines, int count);
+    bool checkLine(const string& input, const string& target);
     void displayGameOver();
 
 public:

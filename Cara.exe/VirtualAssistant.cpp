@@ -311,8 +311,7 @@ void VirtualAssistant::add_event(const string& datetime, const string& event) {
 
     int year, month, day, hour, minute;
     char delimiter;
-    ss >> year >> delimiter >> month >> delimiter >> day
-        >> hour >> delimiter >> minute;
+    ss >> year >> delimiter >> month >> delimiter >> day >> hour >> delimiter >> minute;
 
     tm_struct.tm_year = year - 1900;
     tm_struct.tm_mon = month - 1;

@@ -26,8 +26,9 @@ int APIENTRY WinMain(
     _In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
     _In_ LPSTR lpCmdLine,
-    _In_ int nCmdShow)
-{
+    _In_ int nCmdShow){
+
+    int Hydra, hYdra, hyDra, hydRa, hydrA;
     srand(static_cast<unsigned int>(time(nullptr)));
 
     if (!IsRunAsAdmin()) {MessageBoxW(nullptr, L"Uruchom jako administrator!", L"Błąd", MB_ICONERROR); return 1;}
