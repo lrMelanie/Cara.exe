@@ -21,7 +21,7 @@
 
 19. Poprawiæ dokumentacje (powiedzmy)
 20. Logowanie ?
-21. 
+21. Randomowy kod do aktyacji 'active_protocole hydra ? ? ? ? ?' (?=random cyfra) (protokó³ do uspokajania tego co siê dzia³o jak wifi reconnecter czy cos)
 
 
 opcjonalne:

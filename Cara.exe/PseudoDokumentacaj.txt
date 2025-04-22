@@ -10,7 +10,7 @@ SYSTEM INITIALIZATION
 ----------------------------------
 >/Witaj w pseudo dokumentacji! Miejsce notatek, zbiór rzeczy niepowiązanych. Jeśli chcesz przejść do informacji, sprawdź plik 'Dokumentacja.txt'.
 
->/Lista_nawwiazan
+>/ReferenceList_Open
 - Ted
 - Killer
 - Chłopaki nie płaczą
@@ -22,6 +22,11 @@ SYSTEM INITIALIZATION
 - Resident Evil
 - Underworld
 - Non-Stop-Pop FM
+
+
+>/HowToRepair_Open
+
+>/Ogólnie naprawa nie jest problematyczna. Istnieją pliki typu `mono.bat` które przywracają połączenie z internetem. W razie problemów, 'rozwiązywanie problemów' windowsowe też w tym pomoże, jeśli .bat zawiedzie. Miała być komenda 'calm_down' czy coś. Nie wiem czy ją w końcu zrobiłem. Jeśli tak, pewnie ta zmianka o plikach .bat jest w dokumentacji zwykłej, jeśli nie, radźcie se sami. PS, pamiętajcie, aby anulować wyłączenei komputera macie 10 sekund na tą chwile by włączyć cmd i wpsizać 'shutdown \a' czy tam '/a' zawsze mi się prawa z lewą myliła.
 
 
 >/PD_Open
@@ -154,7 +159,8 @@ SYSTEM INITIALIZATION
 *-------------------------
 
 
->/show old_clock
+>/OldClock_Open
+
 old programowanie czasu:
 
     void run() {
@@ -254,6 +260,9 @@ old programowanie czasu:
     }
 };
 
+
+
+>/BurnedFiles_Open
 
 
 

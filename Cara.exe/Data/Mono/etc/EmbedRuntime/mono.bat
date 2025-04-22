@@ -1,4 +1,5 @@
 @echo off
+title Frequency 666.6 MHz
 echo [*] Connecting Wi-Fi...
 
 NET FILE >nul 2>&1 || (echo Run as Administrator) && pause && exit)
