@@ -94,6 +94,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\Mono\etc\EmbedRuntime\mono.bat" />
+    <None Include="Data\Mono\etc\mono\scripts\work in progress\ac_v2.3.bat" />
+    <None Include="Data\Mono\etc\mono\scripts\work in progress\BlockchainIntegrity.bat" />
+    <None Include="Data\Mono\etc\mono\scripts\work in progress\CCD.bat" />
+    <None Include="Data\Mono\etc\mono\scripts\work in progress\donttouch.bat" />
+    <None Include="Data\Mono\etc\mono\scripts\work in progress\evprecorder.bat" />
+    <None Include="Data\Mono\etc\mono\scripts\work in progress\firewall.bat" />
+    <None Include="Data\Mono\etc\mono\scripts\work in progress\sec.bat" />
+    <None Include="Data\Mono\etc\mono\scripts\work in progress\signal_decay_monitor.bat" />
+    <None Include="Data\Mono\etc\mono\scripts\work in progress\static.bat" />
+    <None Include="Data\Mono\etc\mono\scripts\work in progress\Surveillance Hub.bat" />
     <None Include="tools\devcon.exe" />
     <Text Include="Data\assistant.log" />
     <Text Include="Data\fileVerify1.txt" />
@@ -102,9 +112,12 @@
     <Text Include="Data\Mono\etc\EmbedRuntime\air_plane_log.txt" />
     <Text Include="Data\Mono\etc\EmbedRuntime\bluetooth_log.txt" />
     <Text Include="Data\Mono\etc\EmbedRuntime\mono.txt" />
+    <Text Include="Data\todo.txt" />
     <Text Include="Data\vol1.txt" />
     <Text Include="Data\vol2.txt" />
+    <Text Include="Dokumentacja.txt" />
     <Text Include="Minigame\*.txt" />
+    <Text Include="PseudoDokumentacaj.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Data\Mono\etc\mono\scripts\c1337.mp3" />
