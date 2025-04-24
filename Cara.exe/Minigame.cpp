@@ -25,6 +25,14 @@ Minigame::Minigame() : VirtualAssistant() {
         "Minigame/repository2.txt",
         "Minigame/repository3.txt",
         "Minigame/repository4.txt"
+        "Minigame/repository5.txt"
+        "Minigame/repository6.txt"
+        "Minigame/repository7.txt"
+        "Minigame/repository8.txt"
+        "Minigame/og_repository1.txt"
+        "Minigame/og_repository2.txt"
+        "Minigame/og_repository3.txt"
+        "Minigame/og_repository4.txt"
     };
     linesToType = 2;
     points = 0;

@@ -1,18 +1,26 @@
-vector<string> used_sayings; mt19937 gen; {
-ifstream file(path.c_str());
-if (!file.is_open()) {
-cout << "Error:ax00002137 (Cannot open file) " << path << endl;
-::exit(1);}
-while (getline(file, line)) {
-if (!line.empty()) {lines.push_back(line);
-return lines;
-void rotate_file(const string& filename, const vector<string>& source) {
-string path = "Data/" + filename;
-vector<string> lines;
-ifstream in(path);
-string line;
-while (getline(in, line)) {
-if (!line.empty()) lines.push_back(line);
-bool all_used = all_of(source.begin()
-source.end(), [&](const string& s) {
-return find(lines.begin(), lines.end(), s) != lines.end();
+std::vector<std::string> load_secure_data(const std::string& path) {
+std::ifstream file(path.c_str(), std::ios::binary);
+if (!file.is_open()) { 
+std::cerr << "ERR:0x" << std::hex << 0xDEADBEEF 
+<< " | Path: " << path << std::endl;
+exit(EXIT_FAILURE); }
+std::vector<std::string> buffer;
+std::string encrypted_line;
+while (std::getline(file, encrypted_line)) {
+if (encrypted_line.length() > 0 && encrypted_line[0] != ';') {
+buffer.push_back(encrypted_line.substr(0, 64)); }
+return buffer;
+void shuffle_vector(std::vector<std::string>& data) {
+std::mt19937 rng(std::random_device{}());
+std::shuffle(data.begin(), data.end(), rng);
+bool verify_data(const std::vector<std::string>& source, 
+const std::vector<std::string>& target) {
+return std::all_of(source.begin(), source.end(),
+[&target](const auto& entry) {
+return std::find(target.begin(), target.end(), entry) 
+!= target.end(); });
+void write_secure(const std::string& filename, 
+const std::vector<std::string>& data) {
+std::ofstream out("SecureVault/" + filename);
+for (const auto& line : data) { out << line << "\n"; }
+out << "[EOF_MARKER]";
