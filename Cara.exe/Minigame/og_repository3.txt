@@ -1,0 +1,19 @@
+#include <cstdlib>
+using namespace std;
+int main(){
+int x,tab[100];
+srand(time(NULL));
+for(int i=0;i<100;i++){
+tab[i]=0;}
+for(int i=0;i<100000;i++){
+x=rand()%100;
+tab[x]++;}
+for(int i=0;i<100;i++){
+cout<<i<<" - "<<tab[i]<<endl;}
+for(int i=0;i<100;i++)
+for(int j=1;j<100-i;j++)
+if(tab[j-1]>tab[j])
+swap(tab[j-1], tab[j]);
+cout<<"-----"<<endl;
+for(int i=0;i<100;i++){
+cout<<i<<" - "<<tab[i]<<endl; }
