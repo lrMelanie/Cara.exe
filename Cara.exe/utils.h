@@ -1,4 +1,6 @@
-#pragma once
+﻿#pragma once
+#ifndef UTILS_H
+#define UTILS_H
 #include <string>
 #include <windows.h>
 
@@ -13,3 +15,4 @@ inline void launchProcess(const std::string& command) {
     }
     free(cmdLine);
 }
+#endif
