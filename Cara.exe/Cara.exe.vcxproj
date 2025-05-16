@@ -42,31 +42,48 @@
   </ImportGroup>
   <PropertyGroup>
     <ExecutablePath>$(ExecutablePath);$(VCInstallDir)bin\Host$(HostArch)\$(TargetArch);$(WindowsSDK_ExecutablePath)</ExecutablePath>
+    <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NOMINMAX;_HAS_STD_BYTE=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;_HAS_STD_BYTE=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>WinMainCRTStartup</EntryPointSymbol>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>winmm.lib;kernel32.lib;user32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <GenerateManifest>false</GenerateManifest>
-      <AllowIsolation>false</AllowIsolation>
+      <AdditionalDependencies>winmm.lib;kernel32.lib;user32.lib;advapi32.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateManifest>true</GenerateManifest>
+      <AllowIsolation>true</AllowIsolation>
     </Link>
+    <Manifest>
+      <AdditionalManifestFiles>$(ProjectDir)Cara.exe.manifest</AdditionalManifestFiles>
+      <EmbedManifest>true</EmbedManifest>
+      <GenerateCatalog>false</GenerateCatalog>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <UseUnicodeResponseFiles>true</UseUnicodeResponseFiles>
+    </Manifest>
     <PostBuildEvent>
-      <Command>if exist "$(ProjectDir)config\config.txt" (
-    xcopy /Y /I "$(ProjectDir)config\config.txt" "$(OutDir)"
-) else (
-    echo Plik config.txt nie istnieje w $(ProjectDir)config\
-)</Command>
+      <Command>echo Skipping post-build</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <!-- Platform-specific optimizations -->
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
     <ClCompile>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -83,6 +100,8 @@
     <ClCompile Include="maincore.cpp" />
     <ClCompile Include="load.cpp" />
     <ClCompile Include="Minigame.cpp" />
+    <ClCompile Include="Minigame\Coderunner.cpp" />
+    <ClCompile Include="Minigame\CoderunnerOptions.cpp" />
     <ClCompile Include="VirtualAssistant.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +124,7 @@
     <None Include="Data\Mono\etc\mono\scripts\work in progress\static.bat" />
     <None Include="Data\Mono\etc\mono\scripts\work in progress\Surveillance Hub.bat" />
     <None Include="tools\devcon.exe" />
+    <Media Include="Data\Mono\etc\mono\scripts\c1337.mp3" />
     <Text Include="Data\assistant.log" />
     <Text Include="Data\fileVerify1.txt" />
     <Text Include="Data\fileVerify2.txt" />
@@ -112,15 +132,25 @@
     <Text Include="Data\Mono\etc\EmbedRuntime\air_plane_log.txt" />
     <Text Include="Data\Mono\etc\EmbedRuntime\bluetooth_log.txt" />
     <Text Include="Data\Mono\etc\EmbedRuntime\mono.txt" />
+    <Text Include="Data\Mono\etc\EmbedRuntime\PseudoDokumentacja.txt" />
     <Text Include="Data\todo.txt" />
     <Text Include="Data\vol1.txt" />
     <Text Include="Data\vol2.txt" />
+    <Manifest Include="Cara.exe.manifest" />
     <Text Include="Dokumentacja.txt" />
-    <Text Include="Minigame\*.txt" />
-    <Text Include="PseudoDokumentacaj.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="Data\Mono\etc\mono\scripts\c1337.mp3" />
+    <Text Include="Minigame\hscore.txt" />
+    <Text Include="Minigame\og_repository1.txt" />
+    <Text Include="Minigame\og_repository2.txt" />
+    <Text Include="Minigame\og_repository3.txt" />
+    <Text Include="Minigame\og_repository4.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository5.txt" />
+    <Text Include="Minigame\repository6.txt" />
+    <Text Include="Minigame\repository7.txt" />
+    <Text Include="Minigame\repository8.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

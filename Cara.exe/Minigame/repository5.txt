@@ -1,0 +1,28 @@
+const crypto = require('crypto');
+class SecurityManager {
+constructor(masterKey) {
+this.algorithm = 'aes-256-cbc';
+this.key = crypto.scryptSync(masterKey, 'salt', 32);
+encryptData(plaintext) {
+try {
+const iv = crypto.randomBytes(16);
+const cipher = crypto.createCipheriv(this.algorithm, this.key, iv);
+return Buffer.concat([iv, cipher.update(plaintext), cipher.final()]); } 
+catch (e) {
+console.error(`ENCRYPT_FAIL:0x${e.code.toString(16)}`);
+return null;
+decryptData(ciphertext) {
+try {
+const iv = ciphertext.slice(0, 16);
+const decipher = crypto.createDecipheriv(
+this.algorithm, this.key, iv);
+return Buffer.concat([
+decipher.update(ciphertext.slice(16)), 
+decipher.final()
+} catch (e) {
+console.error(`DECRYPT_FAIL:0x${e.code.toString(16)}`);
+return "[CORRUPTED]";
+verifySignature(data, signature) {
+const verifier = crypto.createVerify('SHA256');
+verifier.update(data);
+return verifier.verify(this.key, signature, 'hex');

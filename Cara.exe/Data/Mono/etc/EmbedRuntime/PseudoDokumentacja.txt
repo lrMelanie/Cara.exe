@@ -527,3 +527,19 @@ SendInput – emuluje naciskanie klawiszy (np. NumLock).
 
 Podsumowanie techniczne
 Kod wykorzystuje nisko poziomowe API Windows do osiągnięcia funkcjonalności "hakerskiego asystenta". Struktura jest modularna (klasy VirtualAssistant, Minigame), ale brakuje współczesnych praktyk (np. obsługa wyjątków, RAII). Użycie WinMain i dyrektyw #pragma pokazuje silne powiązanie z platformą Windows, co ogranicza przenośność na inne systemy. Projekt łączy elementy edukacyjne (np. wielowątkowość) z kontrowersyjnymi technikami (modyfikacje systemowe), co wymaga ostrożności przy uruchomieniu.
+
+
+    while (true) {
+        system("cls");
+        cout
+            << "          ==== HACKER TERMINAL ====      \n"                          "
+            << "    ▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜\n"
+            << "    ▌  TERMINAL ACCESS: [LEVEL OMEGA]    ▐\n"
+            << "     ▌   USER: [CLASSIFIED]               ▐\n"
+            << "    ▌                                    ▌\n"
+            << "     ▌                                    ▌\n"
+            << "    ▌   1. INITIATE CODE RUNNER          ▌\n"
+            << "     ▌  2. RETURN TO MAIN SYSTEM          ▌\n"
+            << "    ▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟\n\n\n\n"
+            << ">> ";
+        getline(cin, choice);

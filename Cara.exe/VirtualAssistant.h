@@ -1,4 +1,6 @@
 #pragma once
+#ifndef VIRTUALASSISTANT_H
+#define VIRTUALASSISTANT_H
 #include <string>
 #include <vector>
 #include <fstream>
@@ -46,3 +48,4 @@ public:
     void handle_query(const string& query);
     string get_ai_response(const string& query);
 };
+#endif 

@@ -1,0 +1,18 @@
+using System.Text.RegularExpressions;
+public class SecurityValidator {
+private const string Pattern = @"^(?=.*[A-Z])(?=.{12,})";
+private readonly Regex _regex = new Regex(Pattern, RegexOptions.Compiled);
+public bool ValidateCredentials(string input) {
+return _regex.IsMatch(input) && 
+CheckBlacklist(input) && 
+(input.Length % 2 == 0 ? 
+ValidateEven(input) : ValidateOdd(input)); }
+private bool CheckBlacklist(string input) {
+string[] forbidden = {"admin", "root", "sudo"};
+return !forbidden.Any(input.ToLower().Contains); }
+private bool ValidateEven(string input) {
+return input.Select((c, i) => (i % 2 == 0) ? c ^ 0x55 : c)
+.Sum() % 256 == 0; }
+private bool ValidateOdd(string input) {
+return Encoding.UTF8.GetBytes(input)
+.Aggregate(0, (acc, b) => acc ^ b) != 0xDE;

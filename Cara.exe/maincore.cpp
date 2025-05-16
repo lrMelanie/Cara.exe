@@ -28,13 +28,14 @@ int APIENTRY WinMain(
     _In_ LPSTR lpCmdLine,
     _In_ int nCmdShow){
 
-    int Hydra, hYdra, hyDra, hydRa, hydrA;
+    //int Hydra, hYdra, hyDra, hydRa, hydrA;
     srand(static_cast<unsigned int>(time(nullptr)));
 
-    if (!IsRunAsAdmin()) {MessageBoxW(nullptr, L"Uruchom jako administrator!", L"Błąd", MB_ICONERROR); return 1;}
+    if (!IsRunAsAdmin()){MessageBoxA(nullptr, "Run as administrator!", "Błąd", MB_ICONERROR);return 1;}
     AllocConsole();
-    FILE* fpOut, * fpIn;
-    if (freopen_s(&fpOut, "CONOUT$", "w", stdout) != 0 || freopen_s(&fpIn, "CONIN$", "r", stdin) != 0) {MessageBoxW(nullptr, L"Błąd inicjalizacji konsoli!", L"Error", MB_ICONERROR);return 1;}
+    FILE* fpOut;
+    FILE* fpIn; 
+    if (freopen_s(&fpOut, "CONOUT$", "w", stdout) != 0 || freopen_s(&fpIn, "CONIN$", "r", stdin) != 0) {MessageBoxA(nullptr, "Console initialization error!!", "Error", MB_ICONERROR); return 1;}
 
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
@@ -42,7 +43,7 @@ int APIENTRY WinMain(
 
     show_loading();
     system("cls");
-    std::cout << "----------------------------------";
+
     show_logotype();
 
     Sleep(600);
