@@ -1,3 +1,10 @@
-﻿  Coderunner.cpp
+﻿  load.cpp
+  maincore.cpp
+  VirtualAssistant.cpp
+  main.cpp
+  Coderunner.cpp
+  CoderunnerOptions.cpp
+  Minigame.cpp
+  Generating Code...
   Cara.exe.vcxproj -> C:\Users\olvid\source\repos\Cara.exe\x64\Debug\Cara.exe.exe
   Skipping post-build
