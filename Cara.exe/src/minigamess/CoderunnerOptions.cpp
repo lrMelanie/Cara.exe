@@ -1,4 +1,4 @@
-#include "../Minigame.h"
+#include <minigames/Minigame.h>
 #include <windows.h> 
 #include <iostream>
 #include <fstream>
@@ -6,13 +6,15 @@
 
 using namespace std;
 
+string reppath = "resources/data/minigame/coderunner/";
+
 void showCodeRunnerOptions() {
     vector<string> options;
-    ifstream in("Minigame/options.txt");
+    ifstream in(reppath + "options.txt");
     if (!in.is_open()) {
-        ofstream createFile("Minigame/options.txt");
+        ofstream createFile(reppath + "options.txt");
         createFile.close();
-        in.open("Minigame/options.txt");
+        in.open(reppath + "options.txt");
     }
 
     string line;
@@ -53,7 +55,7 @@ void showCodeRunnerOptions() {
         if (it != options.end()) options.erase(it);
         else options.push_back(difficulty);
 
-        ofstream out("Minigame/options.txt");
+        ofstream out(reppath + "options.txt");
         if (!out.is_open()) {
             MessageBoxA(NULL, "Failed to save options!", "Error", MB_ICONERROR);
             return;

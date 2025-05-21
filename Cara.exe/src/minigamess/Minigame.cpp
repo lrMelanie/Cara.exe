@@ -1,6 +1,7 @@
-﻿#include "Minigame.h"
-#include "utils.h"
-#include "load.h"
+﻿#include <minigames/Minigame.h>
+#include <utils.h>
+#include <core/load.h>
+#include <core/VirtualAssistant.h>
 #include <iostream>
 
 using namespace std;

@@ -18,6 +18,58 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\audio\c1337.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="resources\data\docs\Dokumentacja.txt" />
+    <Text Include="resources\data\docs\mono.txt" />
+    <Text Include="resources\data\docs\PseudoDokumentacja.txt" />
+    <Text Include="resources\data\docs\todo.txt" />
+    <Text Include="resources\data\fileVerify1.txt" />
+    <Text Include="resources\data\fileVerify2.txt" />
+    <Text Include="resources\data\minigame\coderunner\hscore.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository1.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository2.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository3.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository4.txt" />
+    <Text Include="resources\data\minigame\coderunner\options.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository1.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository2.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository3.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository4.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository5.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository6.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository7.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository8.txt" />
+    <Text Include="resources\data\vol1.txt" />
+    <Text Include="resources\data\vol2.txt" />
+    <Text Include="resources\logs\airplane_log.txt" />
+    <Text Include="resources\logs\assistant.log" />
+    <Text Include="resources\logs\bluetooth_log.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\data\secure\guardian_angel.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="resources\manifest\Cara.exe.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\core\load.cpp" />
+    <ClCompile Include="src\core\maincore.cpp" />
+    <ClCompile Include="src\core\VirtualAssistant.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\minigamess\Coderunner.cpp" />
+    <ClCompile Include="src\minigamess\CoderunnerOptions.cpp" />
+    <ClCompile Include="src\minigamess\Minigame.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\core\load.h" />
+    <ClInclude Include="include\core\VirtualAssistant.h" />
+    <ClInclude Include="include\main.h" />
+    <ClInclude Include="include\minigames\Minigame.h" />
+    <ClInclude Include="include\utils.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -63,7 +115,7 @@
       <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;_HAS_STD_BYTE=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)./include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -95,62 +147,5 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="maincore.cpp" />
-    <ClCompile Include="load.cpp" />
-    <ClCompile Include="Minigame.cpp" />
-    <ClCompile Include="Minigame\Coderunner.cpp" />
-    <ClCompile Include="Minigame\CoderunnerOptions.cpp" />
-    <ClCompile Include="VirtualAssistant.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="load.h" />
-    <ClInclude Include="main.h" />
-    <ClInclude Include="utils.h" />
-    <ClInclude Include="VirtualAssistant.h" />
-    <ClInclude Include="Minigame.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Data\Mono\etc\EmbedRuntime\mono.bat" />
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\ac_v2.3.bat" />
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\BlockchainIntegrity.bat" />
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\CCD.bat" />
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\donttouch.bat" />
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\evprecorder.bat" />
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\firewall.bat" />
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\sec.bat" />
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\signal_decay_monitor.bat" />
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\static.bat" />
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\Surveillance Hub.bat" />
-    <None Include="tools\devcon.exe" />
-    <Media Include="Data\Mono\etc\mono\scripts\c1337.mp3" />
-    <Text Include="Data\assistant.log" />
-    <Text Include="Data\fileVerify1.txt" />
-    <Text Include="Data\fileVerify2.txt" />
-    <Text Include="Data\Mono\etc\EmbedRuntime\airplane_log.txt" />
-    <Text Include="Data\Mono\etc\EmbedRuntime\air_plane_log.txt" />
-    <Text Include="Data\Mono\etc\EmbedRuntime\bluetooth_log.txt" />
-    <Text Include="Data\Mono\etc\EmbedRuntime\mono.txt" />
-    <Text Include="Data\Mono\etc\EmbedRuntime\PseudoDokumentacja.txt" />
-    <Text Include="Data\todo.txt" />
-    <Text Include="Data\vol1.txt" />
-    <Text Include="Data\vol2.txt" />
-    <Manifest Include="Cara.exe.manifest" />
-    <Text Include="Dokumentacja.txt" />
-    <Text Include="Minigame\hscore.txt" />
-    <Text Include="Minigame\og_repository1.txt" />
-    <Text Include="Minigame\og_repository2.txt" />
-    <Text Include="Minigame\og_repository3.txt" />
-    <Text Include="Minigame\og_repository4.txt" />
-    <Text Include="Minigame\repository1.txt" />
-    <Text Include="Minigame\repository2.txt" />
-    <Text Include="Minigame\repository3.txt" />
-    <Text Include="Minigame\repository4.txt" />
-    <Text Include="Minigame\repository5.txt" />
-    <Text Include="Minigame\repository6.txt" />
-    <Text Include="Minigame\repository7.txt" />
-    <Text Include="Minigame\repository8.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>
