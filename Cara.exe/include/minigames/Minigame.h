@@ -1,7 +1,7 @@
 #pragma once
 #ifndef MINIGAME_H
 #define MINIGAME_H
-#include "VirtualAssistant.h"
+#include <core/VirtualAssistant.h>
 #include <random>
 #include <string>
 #include <vector>

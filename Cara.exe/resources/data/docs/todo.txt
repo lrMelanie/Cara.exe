@@ -19,7 +19,7 @@
 17. Inne funkcje typu pogoda czy coœ wci¹¿ z kalendarzem albo timer
 18. Uporz¹dkowanie VirtualAssistant.cpp i mo¿liwe podzielenie go na kolejn¹ matrioszkê jak prawie zosta³ podzielony maincore.cpp na utils.h oraz main.cpp
 
-19. Poprawiæ dokumentacje (powiedzmy)
+19. Poprawiæ i z aktualizowaæ dokumentacje 
 20. Logowanie ?
 21. Randomowy kod do aktyacji 'active_protocole hydra ? ? ? ? ?' (?=random cyfra) (protokó³ do uspokajania tego co siê dzia³o jak wifi reconnecter czy cos)
 

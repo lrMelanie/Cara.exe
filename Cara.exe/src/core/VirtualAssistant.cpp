@@ -1,6 +1,6 @@
 #include <windows.h> 
 #define _HAS_STD_BYTE 0
-#include "VirtualAssistant.h"
+#include <core/VirtualAssistant.h>
 #include <fstream>
 #include <iostream>
 #include <iomanip>
@@ -13,10 +13,10 @@
 using namespace std;
 
 VirtualAssistant::VirtualAssistant() : gen(random_device()()) {
-    logFile.open("Data/assistant.log", ios::app);
+    logFile.open("resources/logs/assistant.log", ios::app);
 
-    vol1 = load_file("Data/vol1.txt");
-    vol2 = load_file("Data/vol2.txt");
+    vol1 = load_file("resources/data/vol1.txt");
+    vol2 = load_file("resources/data/vol2.txt");
 
     reminderActive = true;
     reminderThread = thread(&VirtualAssistant::reminderDaemon, this);
@@ -99,7 +99,7 @@ vector<string> VirtualAssistant::load_file(const string& path) {
 }
 
 void VirtualAssistant::give_motto() {
-    vector<string> fileLines = load_file("Data/fileVerify2.txt");
+    vector<string> fileLines = load_file("resources/data/fileVerify2.txt");
 
     vector<string> availableLines;
     for (const auto& line : vol2) {
@@ -116,17 +116,17 @@ void VirtualAssistant::give_motto() {
     uniform_int_distribution<size_t> dist(0, availableLines.size() - 1);
     string selectedLine = availableLines[dist(gen)];
 
-    ofstream file("Data/fileVerify2.txt", ios::app);
+    ofstream file("resources/data/fileVerify2.txt", ios::app);
     if (file.is_open()) {
         file << selectedLine << "\n";
         file.close();
     }
     else {
-        log("Error appending to Data/fileVerify2.txt");
+        log("Error appending to resources/data/fileVerify2.txt");
         return;
     }
 
-    fileLines = load_file("Data/fileVerify2.txt");
+    fileLines = load_file("resources/data/fileVerify2.txt");
 
     bool allPresent = true;
     for (const auto& line : vol2) {
@@ -146,7 +146,7 @@ void VirtualAssistant::give_motto() {
 }
 
 void VirtualAssistant::processMottoFile() {
-    vector<string> lines = load_file("Data/fileVerify2.txt");
+    vector<string> lines = load_file("resources/data/fileVerify2.txt");
 
     if (lines.size() < 3) {
         log("Not enough lines to process motto file");
@@ -161,7 +161,7 @@ void VirtualAssistant::processMottoFile() {
     }
     lines.resize(3);
 
-    ofstream file("Data/fileVerify2.txt");
+    ofstream file("resources/data/fileVerify2.txt");
     if (file.is_open()) {
         for (const auto& line : lines) {
             file << line << "\n";
@@ -176,7 +176,7 @@ void VirtualAssistant::processMottoFile() {
 }
 
 void VirtualAssistant::say() {
-    vector<string> fileLines = load_file("Data/fileVerify1.txt");
+    vector<string> fileLines = load_file("resources/data/fileVerify1.txt");
 
     vector<string> availableLines;
     for (const auto& line : vol1) {
@@ -193,17 +193,17 @@ void VirtualAssistant::say() {
     uniform_int_distribution<size_t> dist(0, availableLines.size() - 1);
     string selectedLine = availableLines[dist(gen)];
 
-    ofstream file("Data/fileVerify1.txt", ios::app);
+    ofstream file("resources/data/fileVerify1.txt", ios::app);
     if (file.is_open()) {
         file << selectedLine << "\n";
         file.close();
     }
     else {
-        log("Error appending to Data/fileVerify1.txt");
+        log("Error appending to resources/data/fileVerify1.txt");
         return;
     }
 
-    fileLines = load_file("Data/fileVerify1.txt");
+    fileLines = load_file("resources/data/fileVerify1.txt");
 
     bool allPresent = true;
     for (const auto& line : vol1) {
@@ -222,7 +222,7 @@ void VirtualAssistant::say() {
 }
 
 void VirtualAssistant::processSayingFile() {
-    vector<string> lines = load_file("Data/fileVerify1.txt");
+    vector<string> lines = load_file("resources/data/fileVerify1.txt");
 
     if (lines.size() < 3) {
         log("Not enough lines to process saying file");
@@ -235,7 +235,7 @@ void VirtualAssistant::processSayingFile() {
     }
     lines.resize(3);
 
-    ofstream file("Data/fileVerify1.txt");
+    ofstream file("resources/data/fileVerify1.txt");
     if (file.is_open()) {
         for (const auto& line : lines) {
             file << line << "\n";

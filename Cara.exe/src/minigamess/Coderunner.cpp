@@ -1,6 +1,6 @@
-#include "../Minigame.h"
-#include "../utils.h"
-#include "../load.h"
+#include <minigames/Minigame.h>
+#include <utils.h>
+#include <core/load.h>
 #include <iostream>
 #include <fstream>
 #include <chrono>
@@ -11,19 +11,21 @@
 using namespace std;
 using namespace chrono;
 
+string rep_path = "resources/data/minigame/coderunner/";
+
 vector<string> loadActiveRepositories() {
     vector<string> active;
-    ifstream file("Minigame/options.txt");
+    ifstream file(rep_path + "options.txt");
     string line;
 
     while (getline(file, line)) {
-        if (line == "easy") { active.push_back("Minigame/repository3.txt"); active.push_back("Minigame/repository6.txt"); }
-        else if (line == "medium")   { active.push_back("Minigame/repository1.txt"); active.push_back("Minigame/repository5.txt"); }
-        else if (line == "hard") { active.push_back("Minigame/repository2.txt"); active.push_back("Minigame/repository7.txt"); }
-        else if (line == "veryhard") {active.push_back("Minigame/repository4.txt");active.push_back("Minigame/repository8.txt");}
+        if (line == "easy") { active.push_back(rep_path + "repository3.txt"); active.push_back(rep_path + "repository6.txt"); }
+        else if (line == "medium")   { active.push_back(rep_path + "repository1.txt"); active.push_back(rep_path + "repository5.txt"); }
+        else if (line == "hard") { active.push_back(rep_path + "repository2.txt"); active.push_back(rep_path + "repository7.txt"); }
+        else if (line == "veryhard") {active.push_back(rep_path + "repository4.txt");active.push_back(rep_path + "repository8.txt");}
     }
 
-    if (active.empty()) { active = {"Minigame/repository1.txt","Minigame/repository5.txt"};}
+    if (active.empty()) { active = {rep_path + "repository1.txt",rep_path + "repository5.txt"};}
 
     return active;
 }
@@ -33,10 +35,10 @@ Minigame::CodeRunner::CodeRunner() : gen(rd()) {
 
     if (GetAsyncKeyState(VK_F12) & 0x8000) {
         repositoryFiles.insert(repositoryFiles.end(), {
-            "Minigame/og_repository1.txt",
-            "Minigame/og_repository2.txt",
-            "Minigame/og_repository3.txt",
-            "Minigame/og_repository4.txt"
+            rep_path + "og_repository1.txt",
+            rep_path + "og_repository2.txt",
+            rep_path + "og_repository3.txt",
+            rep_path + "og_repository4.txt"
             });
     }
     linesToType = 2;
@@ -45,13 +47,13 @@ Minigame::CodeRunner::CodeRunner() : gen(rd()) {
 }
 
 void Minigame::CodeRunner::loadHighScore() {
-    ifstream file("Minigame/hscore.txt");
+    ifstream file(rep_path + "hscore.txt");
     if (file) file >> highScore;
 }
 
 void Minigame::CodeRunner::saveHighScore() {
     if (points > highScore) {
-        ofstream file("Minigame/hscore.txt");
+        ofstream file(rep_path + "hscore.txt");
         file << points;
     }
 }
@@ -97,7 +99,7 @@ void Minigame::CodeRunner::showMenu() {
         if (choice == "1" || choice == "Start" || choice == "start" || choice == "Start game" || choice == "start game"){playGame();}
         else if (choice == "2" || choice == "options" || choice == "Options" || choice == "Difficulty Options"){showCodeRunnerOptions();}
         else if (choice == "3" || choice == "Back to the Main Menu" || choice == "Main Menu" || choice == "Menu" || choice == "main menu" || choice == "menu" || choice == "Back" || choice == "back" || choice == "exit"){break;}
-        else if (choice == "open coderunner_alpha.exe" || choice == "run coderunner_alpha.exe") {CodeRunner game;game.setRepositories({"Minigame/og_repository1.txt","Minigame/og_repository2.txt","Minigame/og_repository3.txt","Minigame/og_repository4.txt"});game.playGame();}
+        else if (choice == "open coderunner_alpha.exe" || choice == "run coderunner_alpha.exe") {CodeRunner game;game.setRepositories({ rep_path + "og_repository1.txt",rep_path + "og_repository2.txt",rep_path + "og_repository3.txt",rep_path + "og_repository4.txt"});game.playGame();}
         else {cout << "Invalid choice, moron!";Sleep(1000);}
     }
 }
