@@ -1,7 +1,7 @@
 std::vector<std::string> load_secure_data(const std::string& path) {
 std::ifstream file(path.c_str(), std::ios::binary);
-if (!file.is_open()) { 
-std::cerr << "ERR:0x" << std::hex << 0xDEADBEEF 
+if (!file.is_open()) {
+std::cerr << "ERR:0x" << std::hex << 0xDEADBEEF
 << " | Path: " << path << std::endl;
 exit(EXIT_FAILURE); }
 std::vector<std::string> buffer;
@@ -13,13 +13,13 @@ return buffer;
 void shuffle_vector(std::vector<std::string>& data) {
 std::mt19937 rng(std::random_device{}());
 std::shuffle(data.begin(), data.end(), rng);
-bool verify_data(const std::vector<std::string>& source, 
+bool verify_data(const std::vector<std::string>& source,
 const std::vector<std::string>& target) {
 return std::all_of(source.begin(), source.end(),
 [&target](const auto& entry) {
-return std::find(target.begin(), target.end(), entry) 
+return std::find(target.begin(), target.end(), entry)
 != target.end(); });
-void write_secure(const std::string& filename, 
+void write_secure(const std::string& filename,
 const std::vector<std::string>& data) {
 std::ofstream out("SecureVault/" + filename);
 for (const auto& line : data) { out << line << "\n"; }

@@ -1,9 +1,9 @@
 ﻿#define _HAS_STD_BYTE 0
-#include <main.h>
-#include <utils.h>
-#include <core/VirtualAssistant.h>
-#include <minigames/Minigame.h>
-#include <core/load.h>
+#include <main.hpp>
+#include <utils.hpp>
+#include <core/VirtualAssistant.hpp>
+#include <minigames/Minigame.hpp>
+#include <core/load.hpp>
 #include <iostream>
 #include <windows.h>
 #include <fstream>

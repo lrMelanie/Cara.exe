@@ -1,7 +1,8 @@
-﻿#include <minigames/Minigame.h>
-#include <utils.h>
-#include <core/load.h>
-#include <core/VirtualAssistant.h>
+﻿#include <minigames/Minigame.hpp>
+#include <minigames/CodeRunner/Coderunner.hpp>
+#include <utils.hpp>
+#include <core/load.hpp>
+#include <core/VirtualAssistant.hpp>
 #include <iostream>
 
 using namespace std;

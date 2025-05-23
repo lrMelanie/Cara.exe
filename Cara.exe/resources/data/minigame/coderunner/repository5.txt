@@ -7,7 +7,7 @@ encryptData(plaintext) {
 try {
 const iv = crypto.randomBytes(16);
 const cipher = crypto.createCipheriv(this.algorithm, this.key, iv);
-return Buffer.concat([iv, cipher.update(plaintext), cipher.final()]); } 
+return Buffer.concat([iv, cipher.update(plaintext), cipher.final()]); }
 catch (e) {
 console.error(`ENCRYPT_FAIL:0x${e.code.toString(16)}`);
 return null;
@@ -17,7 +17,7 @@ const iv = ciphertext.slice(0, 16);
 const decipher = crypto.createDecipheriv(
 this.algorithm, this.key, iv);
 return Buffer.concat([
-decipher.update(ciphertext.slice(16)), 
+decipher.update(ciphertext.slice(16)),
 decipher.final()
 } catch (e) {
 console.error(`DECRYPT_FAIL:0x${e.code.toString(16)}`);

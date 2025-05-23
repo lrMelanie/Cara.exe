@@ -1,17 +1,15 @@
 #pragma once
-#ifndef MINIGAME_H
-#define MINIGAME_H
-#include <core/VirtualAssistant.h>
-#include <random>
+#ifndef CODERUNNER_HPP
+#define CODERUNNER_HPP
+#include <minigames/Minigame.hpp>
 #include <string>
 #include <vector>
+#include <random>
 
 using namespace std;
 
-void showCodeRunnerOptions();
+namespace Minigame {
 
-class Minigame : public VirtualAssistant {
-public:
     class CodeRunner {
         int points;
         int highScore;
@@ -30,14 +28,11 @@ public:
 
     public:
         CodeRunner();
-        void setRepositories(const vector<string>& repos){repositoryFiles = repos;}
+        void setRepositories(const vector<string>& repos);
         void showMenu();
         void playGame();
         void run();
     };
 
-public:
-    Minigame();
-    void run();
-};
-#endif
+}   
+#endif 

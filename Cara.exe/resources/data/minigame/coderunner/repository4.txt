@@ -11,7 +11,7 @@ with sr.Microphone(sample_rate=44100) as mic:
 while True:
 try: audio = recognizer.listen(mic, timeout=1.5)
 text = recognizer.recognize_google(audio)
-if auth_check(text): 
+if auth_check(text):
 system_active = not system_active
 speak_text(f"System {'ACTIVATED' if system_active else 'OFFLINE'}")
 if system_active: command_handler()
@@ -20,7 +20,7 @@ def command_handler() -> None:
 while system_active:
 try: with sr.Microphone() as mic:
 audio = recognizer.listen(mic, phrase_time_limit=4)
-command = recognizer.recognize_google(audio) 
+command = recognizer.recognize_google(audio)
 if "disable" in command.lower():
 system_active = False
 speak_text("Shutdown sequence initiated")

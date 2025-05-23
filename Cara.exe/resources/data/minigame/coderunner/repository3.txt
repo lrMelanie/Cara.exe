@@ -11,7 +11,7 @@ for (int i=0; i<ARRAY_SIZE; i++) {
 cout << i << "\t| " << stats[i] << endl;
 for (int i=0; i<ARRAY_SIZE-1; i++) {
 for (int j=0; j<ARRAY_SIZE-i-1; j++) {
-if (stats[j] > stats[j+1]) { 
+if (stats[j] > stats[j+1]) {
 swap(stats[j], stats[j+1]);}
 cout << "\nSORTED RESULTS:" << endl;
 for (int i=0; i<ARRAY_SIZE; i++) {

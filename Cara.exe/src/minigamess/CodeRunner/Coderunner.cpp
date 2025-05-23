@@ -1,6 +1,7 @@
-#include <minigames/Minigame.h>
-#include <utils.h>
-#include <core/load.h>
+#include <minigames/Minigame.hpp>
+#include <minigames/CodeRunner/Coderunner.hpp>
+#include <utils.hpp>
+#include <core/load.hpp>
 #include <iostream>
 #include <fstream>
 #include <chrono>
@@ -153,7 +154,8 @@ void Minigame::CodeRunner::playGame() {
                 if (checkLine(input, currentLines[i])) {
                     points++;
                     i++;
-                    endTime = min(endTime + seconds(15), startTime + seconds(90));
+                    auto now = system_clock::now();
+                    endTime = min(endTime + seconds(4), now + seconds(90));
                     if (points % 7 == 0) linesToType++;
                 }
                 else {
