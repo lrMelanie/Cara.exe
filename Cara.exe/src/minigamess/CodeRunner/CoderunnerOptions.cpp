@@ -1,4 +1,5 @@
-#include <minigames/Minigame.h>
+#include <minigames/Minigame.hpp>
+#include <minigames/CodeRunner/Coderunner.hpp>
 #include <windows.h> 
 #include <iostream>
 #include <fstream>
