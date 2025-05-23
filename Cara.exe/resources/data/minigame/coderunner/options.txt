@@ -1,1 +1,4 @@
+easy
+medium
+hard
 veryhard

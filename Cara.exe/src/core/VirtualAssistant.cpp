@@ -1,6 +1,6 @@
 #include <windows.h> 
 #define _HAS_STD_BYTE 0
-#include <core/VirtualAssistant.h>
+#include <core/VirtualAssistant.hpp>
 #include <fstream>
 #include <iostream>
 #include <iomanip>
