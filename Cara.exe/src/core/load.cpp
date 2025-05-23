@@ -1,5 +1,5 @@
 ﻿#define _HAS_STD_BYTE 0
-#include <core/load.h>
+#include <core/load.hpp>
 #include <iostream>
 #include <windows.h>
 #include <io.h>
@@ -30,7 +30,7 @@ void show_loading() {
 }
 
 void show_logotype() {
- 
+
     cout << "----------------------------------" << R"(
   _____          _____             
  / ____|   /\   |  __ \     /\     
