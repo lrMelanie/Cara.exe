@@ -59,16 +59,17 @@
     <ClCompile Include="src\core\maincore.cpp" />
     <ClCompile Include="src\core\VirtualAssistant.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\minigamess\Coderunner.cpp" />
-    <ClCompile Include="src\minigamess\CoderunnerOptions.cpp" />
+    <ClCompile Include="src\minigamess\CodeRunner\Coderunner.cpp" />
+    <ClCompile Include="src\minigamess\CodeRunner\CoderunnerOptions.cpp" />
     <ClCompile Include="src\minigamess\Minigame.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\core\load.h" />
-    <ClInclude Include="include\core\VirtualAssistant.h" />
-    <ClInclude Include="include\main.h" />
-    <ClInclude Include="include\minigames\Minigame.h" />
-    <ClInclude Include="include\utils.h" />
+    <ClInclude Include="include\core\load.hpp" />
+    <ClInclude Include="include\core\VirtualAssistant.hpp" />
+    <ClInclude Include="include\main.hpp" />
+    <ClInclude Include="include\minigames\CodeRunner\Coderunner.hpp" />
+    <ClInclude Include="include\minigames\Minigame.hpp" />
+    <ClInclude Include="include\utils.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
