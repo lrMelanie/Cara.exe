@@ -8,7 +8,7 @@
 
 using namespace std;
 
-namespace Minigame {
+namespace MG_Coderunner {
 
     class CodeRunner {
         int points;
