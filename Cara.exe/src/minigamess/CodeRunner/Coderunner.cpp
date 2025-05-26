@@ -11,6 +11,8 @@
 
 using namespace std;
 using namespace chrono;
+using namespace MG_Coderunner;
+
 
 string rep_path = "resources/data/minigame/coderunner/";
 
@@ -31,7 +33,7 @@ vector<string> loadActiveRepositories() {
     return active;
 }
 
-Minigame::CodeRunner::CodeRunner() : gen(rd()) {
+CodeRunner::CodeRunner() : gen(rd()) {
     repositoryFiles = loadActiveRepositories();
 
     if (GetAsyncKeyState(VK_F12) & 0x8000) {
@@ -47,19 +49,19 @@ Minigame::CodeRunner::CodeRunner() : gen(rd()) {
     loadHighScore();
 }
 
-void Minigame::CodeRunner::loadHighScore() {
+void CodeRunner::loadHighScore() {
     ifstream file(rep_path + "hscore.txt");
     if (file) file >> highScore;
 }
 
-void Minigame::CodeRunner::saveHighScore() {
+void CodeRunner::saveHighScore() {
     if (points > highScore) {
         ofstream file(rep_path + "hscore.txt");
         file << points;
     }
 }
 
-vector<string> Minigame::CodeRunner::loadRepositoryFile(const string& path) {
+vector<string> CodeRunner::loadRepositoryFile(const string& path) {
     vector<string> lines;
     ifstream file(path);
     string line;
@@ -69,24 +71,25 @@ vector<string> Minigame::CodeRunner::loadRepositoryFile(const string& path) {
     return lines;
 }
 
-vector<string> Minigame::CodeRunner::getConsecutiveLines(const vector<string>& lines, int count) {
+
+vector<string> CodeRunner::getConsecutiveLines(const vector<string>& lines, int count) {
     if (lines.size() < static_cast<size_t>(count)) return {};
     uniform_int_distribution<size_t> dist(0, lines.size() - count);
     size_t start = dist(gen);  
     return vector<string>(lines.begin() + start, lines.begin() + start + count);
 }
 
-bool Minigame::CodeRunner::checkLine(const string& input, const string& target) {
+bool CodeRunner::checkLine(const string& input, const string& target) {
     return input == target;
 }
 
-void Minigame::CodeRunner::displayGameOver() {
+void CodeRunner::displayGameOver() {
     system("cls");
     cout << "GAME OVER\nPoints: " << points << "\nHighscore: " << highScore << "\n\n";
     cout << "Type 'restart' to play again\nType 'exit' to quit\n>> ";
 }
 
-void Minigame::CodeRunner::showMenu() {
+void CodeRunner::showMenu() {
     string choice;
     while (true) {
         system("cls");
@@ -105,7 +108,7 @@ void Minigame::CodeRunner::showMenu() {
     }
 }
 
-void Minigame::CodeRunner::playGame() {
+void CodeRunner::playGame() {
     string cmd;
     while (true) {
         system("cls");
@@ -158,9 +161,7 @@ void Minigame::CodeRunner::playGame() {
                     endTime = min(endTime + seconds(4), now + seconds(90));
                     if (points % 7 == 0) linesToType++;
                 }
-                else {
-                    cout << "Try Again~\n";
-                    Sleep(1000);
+                else {cout << "Try Again~\n"; Sleep(1000);
                 }
             }
         }
@@ -169,10 +170,17 @@ void Minigame::CodeRunner::playGame() {
         saveHighScore();
         displayGameOver();
         getline(cin, cmd);
-        if (cmd == "exit") return;
+		if (cmd == "exit") return;
+		else if (cmd == "restart" || cmd == "play again" || cmd == "again") continue;
+		else {cout << "Invalid command! Type 'restart' to play again or 'exit' to quit.\n";Sleep(1000);}
+       
     }
 }
 
-void Minigame::CodeRunner::run() {
+void CodeRunner::run() {
     showMenu();
+}
+
+void CodeRunner::setRepositories(const vector<string>& repos) {
+    repositoryFiles = repos;
 }
