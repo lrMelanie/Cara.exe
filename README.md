@@ -1,4 +1,4 @@
-﻿⚠️ Important Notes
+﻿## ⚠️ Important Notes
 Academic Project - Not production-ready code
 
 Requires Caution:
@@ -57,7 +57,7 @@ cmake .. -G "Visual Studio 17 2022" -A x64
 cmake --build . --config Release
 ```
 
-🕹️ Basic Usage
+## 🕹️ Basic Usage
 ```bash
 # Core functionality
 > schedule add 2025-12-31 23:59 "New Year Countdown"
