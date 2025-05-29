@@ -1,6 +1,6 @@
 
 ### CONTRIBUTING.md
-```markdown
+
 # Contribution Guidelines
 
 ## Academic Project Notice
@@ -19,7 +19,8 @@ This repository is part of university coursework. Contribution opportunities are
 
 ### Setup
 ```bash
-git clone https://github.com/yourusername/DeltaFoxtrot.git
-cd DeltaFoxtrot
+git clone https://github.com/lrMelanie/Cara.exe
+cd Cara.exe
 cmake -S . -B build -G "Visual Studio 17 2022" -A x64
 cmake --build build --config Release
+```
