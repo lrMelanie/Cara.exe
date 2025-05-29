@@ -50,12 +50,15 @@ GUI interface development
 
 2. **Build**:
 ```bash
-git clone https://github.com/yourusername/DeltaFoxtrot.git
-cd DeltaFoxtrot
+git clone https://github.com/lrMelanie/Cara.exe
+cd Cara.exe
 mkdir build && cd build
 cmake .. -G "Visual Studio 17 2022" -A x64
 cmake --build . --config Release
 ```
+probably should work
+
+
 
 ## 🕹️ Basic Usage
 ```bash
