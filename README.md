@@ -55,10 +55,10 @@ cd DeltaFoxtrot
 mkdir build && cd build
 cmake .. -G "Visual Studio 17 2022" -A x64
 cmake --build . --config Release
-
+```
 
 🕹️ Basic Usage
-bash
+```bash
 # Core functionality
 > schedule add 2025-12-31 23:59 "New Year Countdown"
 > motto
@@ -74,7 +74,7 @@ bash
 > ???
 > ???
 > ???
-
+```
 
 
 
