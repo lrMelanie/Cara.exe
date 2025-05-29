@@ -49,6 +49,7 @@
     <Text Include="resources\logs\bluetooth_log.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\README.md" />
     <None Include="resources\data\secure\guardian_angel.bat" />
   </ItemGroup>
   <ItemGroup>
