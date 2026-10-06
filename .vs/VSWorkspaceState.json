@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\x64",
+    "\\x64\\Debug"
   ],
   "SelectedNode": "\\Cara.exe.sln",
   "PreviewInSolutionExplorer": false
