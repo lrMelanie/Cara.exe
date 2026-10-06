@@ -1,0 +1,20 @@
+module QuantumCrypto
+class CipherError < StandardError
+def initialize(msg="ERR:0x#{rand(0x1000..0xFFFF).to_s(16)}")
+super end
+def self.encrypt(plaintext, key)
+raise CipherError unless valid_key?(key)
+plaintext.bytes.each_with_index.map do |byte, i|
+(byte ^ key[i % key.length].ord).chr
+end.join.unpack('H*').first
+rescue => e
+raise CipherError, "ENCRYPT_FAIL: #{e.message}" end
+def self.decrypt(ciphertext, key)
+binary = [ciphertext].pack('H*').bytes
+binary.each_with_index.map do |byte, i|
+(byte ^ key[i % key.length].ord).chr
+end.join
+rescue => e
+raise CipherError, "DECRYPT_FAIL:0x#{e.backtrace.length.to_s(16)}"
+private_class_method def self.valid_key?(key)
+key.length >= 8 && key.match?(/[^\x00-\x7F]/)

@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Pliki źródłowe">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Pliki zasobów">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Data">
+      <UniqueIdentifier>{225e3d96-def2-4b2d-b891-7f64527bfa0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Game">
+      <UniqueIdentifier>{87058488-4f12-49da-9f99-82f17a41b3b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Data\verfile">
+      <UniqueIdentifier>{af45043f-c289-4d0e-8eb0-95b29365edbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Game\Coderunner">
+      <UniqueIdentifier>{64394ad4-859e-4f68-bf95-7c77c6b01818}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Game\Coderunner\CodrunnerData">
+      <UniqueIdentifier>{ef26f77d-d727-4c00-9859-25c5fce1858f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Data\VirtualAssistant">
+      <UniqueIdentifier>{e75cdb00-6eac-4f56-b192-ebb7392d0f98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Tools">
+      <UniqueIdentifier>{8b20c5cf-d3b7-4548-aff2-dadf9d787f7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Data\Mono">
+      <UniqueIdentifier>{90a90e1d-c00e-4bb9-818d-b3c7a3b27a92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Data\Mono\etc">
+      <UniqueIdentifier>{8adcba54-a8de-48bb-9d9e-5c749ab176d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Data\Mono\etc\EmbedRuntime">
+      <UniqueIdentifier>{4a72fc3c-7fce-40e0-a7ef-d1895d6a76b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Data\Mono\etc\mono">
+      <UniqueIdentifier>{4841b958-9382-401a-bd2b-5de841a93911}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Data\Mono\etc\mono\scripts">
+      <UniqueIdentifier>{8de1f068-41f5-4b9d-8d87-4440c62a4851}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Data\Mono\etc\mono\scripts\work in progress">
+      <UniqueIdentifier>{ec03ad13-20cc-49cb-a2a2-75b8e8eba0fb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\core\load.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\maincore.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\VirtualAssistant.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\minigamess\CodeRunner\Coderunner.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\minigamess\CodeRunner\CoderunnerOptions.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\minigamess\Minigame.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Minigame\og_repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository5.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository6.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository7.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository8.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository5.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository6.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository7.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository8.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository5.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository6.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository7.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository8.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository5.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository6.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository7.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository8.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\og_repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository5.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository6.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository7.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository8.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository5.txt" />
+    <Text Include="Minigame\repository6.txt" />
+    <Text Include="Minigame\repository7.txt" />
+    <Text Include="Minigame\repository8.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository5.txt" />
+    <Text Include="Minigame\repository6.txt" />
+    <Text Include="Minigame\repository7.txt" />
+    <Text Include="Minigame\repository8.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository5.txt" />
+    <Text Include="Minigame\repository6.txt" />
+    <Text Include="Minigame\repository7.txt" />
+    <Text Include="Minigame\repository8.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository5.txt" />
+    <Text Include="Minigame\repository6.txt" />
+    <Text Include="Minigame\repository7.txt" />
+    <Text Include="Minigame\repository8.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository5.txt" />
+    <Text Include="Minigame\repository6.txt" />
+    <Text Include="Minigame\repository7.txt" />
+    <Text Include="Minigame\repository8.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository5.txt" />
+    <Text Include="Minigame\repository6.txt" />
+    <Text Include="Minigame\repository7.txt" />
+    <Text Include="Minigame\repository8.txt" />
+    <Text Include="Minigame\repository1.txt" />
+    <Text Include="Minigame\repository2.txt" />
+    <Text Include="Minigame\repository3.txt" />
+    <Text Include="Minigame\repository4.txt" />
+    <Text Include="Minigame\repository5.txt" />
+    <Text Include="Minigame\repository6.txt" />
+    <Text Include="Minigame\repository7.txt" />
+    <Text Include="Minigame\repository8.txt" />
+    <Text Include="Minigame\og_repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository5.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository6.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository7.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository8.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\*.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\og_repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository1.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository2.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository3.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository4.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository5.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository6.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository7.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="Minigame\repository8.txt">
+      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
+    </Text>
+    <Text Include="resources\data\docs\Dokumentacja.txt" />
+    <Text Include="resources\data\docs\mono.txt" />
+    <Text Include="resources\data\docs\PseudoDokumentacja.txt" />
+    <Text Include="resources\data\docs\todo.txt" />
+    <Text Include="resources\data\fileVerify1.txt" />
+    <Text Include="resources\data\fileVerify2.txt" />
+    <Text Include="resources\data\minigame\coderunner\hscore.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository1.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository2.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository3.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository4.txt" />
+    <Text Include="resources\data\minigame\coderunner\options.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository1.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository2.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository3.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository4.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository5.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository6.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository7.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository8.txt" />
+    <Text Include="resources\data\vol1.txt" />
+    <Text Include="resources\data\vol2.txt" />
+    <Text Include="resources\logs\airplane_log.txt" />
+    <Text Include="resources\logs\assistant.log" />
+    <Text Include="resources\logs\bluetooth_log.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\core\load.hpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\VirtualAssistant.hpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="include\main.hpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="include\minigames\CodeRunner\Coderunner.hpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="include\minigames\Minigame.hpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils.hpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" />
+    <None Include="resources\data\secure\guardian_angel.bat">
+      <Filter>Pliki źródłowe</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\audio\c1337.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="resources\manifest\Cara.exe.manifest" />
+  </ItemGroup>
+</Project>

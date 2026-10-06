@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\audio\c1337.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="resources\data\docs\Dokumentacja.txt" />
+    <Text Include="resources\data\docs\mono.txt" />
+    <Text Include="resources\data\docs\PseudoDokumentacja.txt" />
+    <Text Include="resources\data\docs\todo.txt" />
+    <Text Include="resources\data\fileVerify1.txt" />
+    <Text Include="resources\data\fileVerify2.txt" />
+    <Text Include="resources\data\minigame\coderunner\hscore.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository1.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository2.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository3.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository4.txt" />
+    <Text Include="resources\data\minigame\coderunner\options.txt" />
+    <Text Include="resources\data\minigame\dicearena\best.txt" />
+    <Text Include="resources\data\minigame\reactor\best.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository1.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository2.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository3.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository4.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository5.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository6.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository7.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository8.txt" />
+    <Text Include="resources\data\vol1.txt" />
+    <Text Include="resources\data\vol2.txt" />
+    <Text Include="resources\logs\airplane_log.txt" />
+    <Text Include="resources\logs\assistant.log" />
+    <Text Include="resources\logs\bluetooth_log.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" />
+    <None Include="resources\data\secure\guardian_angel.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="resources\manifest\Cara.exe.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\core\load.cpp" />
+    <ClCompile Include="src\core\maincore.cpp" />
+    <ClCompile Include="src\core\VirtualAssistant.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\minigamess\CodeRunner\Coderunner.cpp" />
+    <ClCompile Include="src\minigamess\CodeRunner\CoderunnerOptions.cpp" />
+    <ClCompile Include="src\minigamess\DiceArena\DiceArena.cpp" />
+    <ClCompile Include="src\minigamess\Reactor\Reactor.cpp" />
+    <ClCompile Include="src\minigamess\Minigame.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\core\load.hpp" />
+    <ClInclude Include="include\core\VirtualAssistant.hpp" />
+    <ClInclude Include="include\main.hpp" />
+    <ClInclude Include="include\minigames\CodeRunner\Coderunner.hpp" />
+    <ClInclude Include="include\minigames\DiceArena\DiceArena.hpp" />
+    <ClInclude Include="include\minigames\Reactor\Reactor.hpp" />
+    <ClInclude Include="include\minigames\Minigame.hpp" />
+    <ClInclude Include="include\utils.hpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{7b9ff9f5-1cfc-426d-ae56-dce7e6d5f8e9}</ProjectGuid>
+    <RootNamespace>Caraexe</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsSDKDesktopARM64Support>true</WindowsSDKDesktopARM64Support>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseDebugLibraries Condition="'$(Configuration)'=='Debug'">true</UseDebugLibraries>
+    <UseDebugLibraries Condition="'$(Configuration)'=='Release'">false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup>
+    <ExecutablePath>$(ExecutablePath);$(VCInstallDir)bin\Host$(HostArch)\$(TargetArch);$(WindowsSDK_ExecutablePath)</ExecutablePath>
+    <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;_HAS_STD_BYTE=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)./include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>WinMainCRTStartup</EntryPointSymbol>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;kernel32.lib;user32.lib;advapi32.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateManifest>true</GenerateManifest>
+      <AllowIsolation>true</AllowIsolation>
+    </Link>
+    <Manifest>
+      <AdditionalManifestFiles>$(ProjectDir)Cara.exe.manifest</AdditionalManifestFiles>
+      <EmbedManifest>true</EmbedManifest>
+      <GenerateCatalog>false</GenerateCatalog>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <UseUnicodeResponseFiles>true</UseUnicodeResponseFiles>
+    </Manifest>
+    <PostBuildEvent>
+      <Command>echo Skipping post-build</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

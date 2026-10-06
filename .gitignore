@@ -28,5 +28,11 @@
 
 # Executables
 *.exe
+!Cara.exe/
 *.out
 *.app
+
+# Visual Studio working files (per-user, must not be committed)
+.vs/
+*.vsidx
+*.suo

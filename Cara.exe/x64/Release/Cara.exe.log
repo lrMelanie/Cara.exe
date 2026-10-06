@@ -1,0 +1,20 @@
+﻿  Reactor.cpp
+  Minigame.cpp
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(24,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u2554" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(24,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u2550" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(24,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u2557" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(25,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u2551" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(26,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u2551" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(27,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u2560" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(27,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u2550" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(27,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u2563" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(28,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u2551" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(29,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u2551" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(30,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u2551" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(31,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u2551" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(32,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u255A" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(32,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u2550" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+C:\Lobotomia\Cara.exe\Cara.exe\src\minigamess\Minigame.cpp(32,16): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u255D" nie może być przedstawiony w bieżącej stronie kodowej (1250)
+  Generowanie kodu...
+  Cara.exe.vcxproj -> C:\Lobotomia\Cara.exe\x64\Release\Cara.exe.exe
+  Skipping post-build

@@ -1,0 +1,242 @@
+1. Architektura Systemu
+1.1 Struktura Plików
+bash
+CaraProject/
+├─ Cara.exe.manifest        # Manifest uprawnień
+├─ maincore.cpp            # Główny punkt wejścia (WinMain)
+├─ main.cpp                # Funkcje systemowe
+├─ VirtualAssistant.h/.cpp # Rdzeń funkcjonalności asystenta
+├─ Minigame.h/.cpp         # Mechanika gry
+├─ load.h/.cpp             # Ekran ładowania
+├─ utils.h                 # Narzędzia systemowe
+├─ Data/                   # Zasoby tekstowe
+│  ├─ vol1.txt            # Baza sentencji
+│  └─ vol2.txt            # Baza motywacji
+└─ Minigame/               # Zasoby gry
+   ├─ repository*.txt     # Teksty do przepisywania
+   └─ hscore.txt          # Najlepsze wyniki
+1.2 Zależności Biblioteczne
+Biblioteka	Zastosowanie
+Windows.h	Interakcja z API systemowym (konsola, procesy, rejestr)
+mmsystem.h	Obsługa multimediów (MP3, sygnały dźwiękowe)
+chrono/random	Zarządzanie czasem i generowanie liczb pseudolosowych
+fstream	Operacje na plikach (logi, konfiguracja)
+winhttp.h	Komunikacja HTTP (funkcje "phantom_protocol")
+ShellAPI.h	Uruchamianie zewnętrznych procesów
+2. Szczegóły Implementacyjne
+2.1 maincore.cpp - Rdzeń Aplikacji
+WinMain vs main()
+Konwencja APIENTRY:
+
+cpp
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+Główny punkt wejścia dla aplikacji Windows GUI. Parametry:
+
+hInstance: Instancja aplikacji
+
+lpCmdLine: Argumenty wiersza poleceń (np. "schedule add 2023-10-31 20:00 Spotkanie")
+
+AllocConsole(): Dynamicznie tworzy konsolę dla interfejsu tekstowego.
+
+SetConsoleOutputCP(CP_UTF8): Aktywuje obsługę znaków specjalnych (np. emotikony).
+
+Cykl Życia Aplikacji
+Weryfikacja uprawnień administratorskich (IsRunAsAdmin()).
+
+Inicjalizacja konsoli i przekierowanie strumieni I/O.
+
+Wyświetlenie ekranu ładowania (show_loading()) i logo.
+
+Główna pętla komend: analiza wejścia użytkownika i wywołanie odpowiednich funkcji.
+
+3. Kluczowe Komponenty
+3.1 VirtualAssistant
+3.1.1 Konstruktor i Destruktor
+cpp
+VirtualAssistant::VirtualAssistant() : gen(random_device()()) {
+    _mkdir("Data");  // Tworzy folder na logi
+    logFile.open("Data\\assistant.log");  // Plik dziennika zdarzeń
+    // Ładuje sentencje z vol1.txt i vol2.txt
+}
+mt19937: Generator liczb pseudolosowych Mersenne Twister (jakość lepsza niż rand()).
+
+reminderThread: Wątek sprawdzający przypomnienia co 1 sekundę.
+
+3.1.2 Metody Kluczowe
+print_slowly():
+
+cpp
+void print_slowly(const string& text, unsigned int delay = 30) {
+    for (char c : text) {
+        cout << c << flush;
+        Sleep(delay);  // Efekt "pisania"
+    }
+}
+Użycie: Animuje wypisywanie tekstu (np. powitanie "Hello! I'm Cara...").
+
+reminderDaemon():
+
+cpp
+void VirtualAssistant::reminderDaemon() {
+    while (reminderActive) {
+        if (GetAsyncKeyState(VK_SCROLL)) {  // Wykrywa Scroll Lock
+            // Emuluje naciśnięcie NumLock
+            SendInput(...);
+        }
+        // Sprawdza harmonogram zdarzeń
+    }
+}
+Efekty uboczne: Loguje zdarzenia do assistant.log z sygnaturą czasową.
+
+process_schedule_command():
+Parsuje komendy typu schedule add 2023-10-31 20:00 "Spotkanie", konwertuje datę na time_t, dodaje do wektora schedule.
+
+3.2 Minigame
+3.2.1 Dziedziczenie
+cpp
+class Minigame : public VirtualAssistant {
+    // Dziedziczy: logFile, gen, metody pomocnicze
+    int points;  // Nowe pole specyficzne dla gry
+};
+Cel: Wielokrotne wykorzystanie mechanizmów bazowych (np. print_slowly(), load_file()).
+
+3.2.2 Mechanika Gry
+run():
+
+cpp
+void Minigame::run() {
+    auto endTime = startTime + seconds(90);  // Limit czasu
+    while (points < 100) {
+        // Losuje linie z repository*.txt
+        // Weryfikuje poprawność wprowadzonego tekstu
+    }
+}
+Triki: Co 137 uruchomień otwiera ustawienia kamery (ms-settings:privacy-webcam).
+
+Zapis Wyników:
+
+cpp
+void Minigame::saveHighScore() {
+    if (points > highScore) {
+        ofstream file("Minigame/hscore.txt");
+        file << points;  // Format: liczba całkowita
+    }
+}
+4. Integracja z Systemem
+4.1 Operacje Sieciowe
+enable_airplane_mode()
+cpp
+void enable_airplane_mode() {
+    // Modyfikacja rejestru
+    system("powershell -Command \"Set-ItemProperty ... \"");
+    // Wyłączenie interfejsów
+    system("netsh interface set interface \"Wi-Fi\" admin=disable");
+}
+Efekty:
+
+Tworzy klucz rejestru HKLM\SYSTEM\CurrentControlSet\Control\RadioManagement\SystemRadioState
+
+Loguje operacje do C:\Windows\Temp\airplane_log.txt
+
+activate_bluetooth()
+Wykorzystuje devcon.exe (narzędzie Microsoft) do aktywacji urządzeń Bluetooth.
+
+Logi: bluetooth_log.txt w dwóch lokalizacjach (tymczasowej i embedowanej).
+
+4.2 Efekty Specjalne
+initiate_black_mirror()
+cpp
+void initiate_black_mirror() {
+    for (int i = 0; i < 150; i++) {
+        SetConsoleTextAttribute(hConsole, rand() % 256);  // Losowy kolor
+        cout << static_cast<char>(rand() % 94 + 33);  // Znaki ASCII 33-126
+        Beep(rand() % 2000 + 37, 50);  // Sygnały dźwiękowe
+    }
+}
+Cel: Symulacja "ataku hakerskiego" z efektem wizualnym i dźwiękowym.
+
+execute_spectral_broadcast()
+Miganie konsoli (system("color 0A")).
+
+Odtwarzanie pliku c1337.mp3 lub sygnałów Beep().
+
+Zapis fałszywych współrzędnych GPS do C:\Windows\Temp\location.log.
+
+5. Bezpieczeństwo i Kontrowersje
+5.1 Ryzyka
+Wyłączenie Systemu:
+
+cpp
+system("shutdown /s /t 10");  // Wyłączenie po 10 sekundach
+Brak potwierdzenia poza podstawowym "Are you sure?".
+
+phantom_protocol():
+
+cpp
+for (int i = 1; i <= 16; i++) {
+    launchProcess("cmd /c start https://void.domain/N0T-4-TR4P-" + i);
+}
+Generuje 16 losowych żądań HTTP, potencjalnie podejrzana aktywność.
+
+5.2 Środki Ostrożności
+Wymaganie Uprawnień Administratorskich:
+
+xml
+<!-- Cara.exe.manifest -->
+<requestedExecutionLevel level="requireAdministrator"/>
+Bloki Try/Catch: Otaczają wszystkie operacje plikowe i sieciowe.
+
+Logowanie: Pełna ścieżka audytowa w Data\assistant.log.
+
+6. Komendy i Składnia
+6.1 Podstawowe
+Komenda	Opis
+help	Wyświetla listę komend
+motto	Losowy cytat motywacyjny (z vol2.txt)
+say	Sarkastyczna odpowiedź (z vol1.txt)
+schedule	Zarządzanie harmonogramem (add/list/remove)
+minigame	Uruchamia grę w szybkie pisanie
+6.2 Sekretne Komendy
+Komenda	Efekt
+WELCOMETOTHEGAME	Uruchamia sekwencję: minigra + RickRoll + efekty wizualne
+A.L.I.V.E	Kalibracja audio, wyłączenie Wi-Fi, fałszywe GPS
+HELP-ME	Generuje 16 losowych URL, usuwa logi po 37s
+D0N'T-L00K-B3H1ND-Y0U	Efekt "Matrixa", tryb samolotowy, restart usług
+7. Dyrektywy i Optymalizacje
+7.1 #pragma comment
+cpp
+#pragma comment(lib, "winmm.lib")  // Biblioteka multimedialna
+#pragma comment(lib, "kernel32.lib")  // API systemowe
+#pragma comment(linker, "/manifestdependency:...")  // Styl GUI
+Cel: Automatyczne linkowanie bibliotek bez konfiguracji w IDE.
+
+7.2 Obsługa Błędów
+mciSendString:
+
+cpp
+MCIERROR err = mciSendStringA("play mp3file", NULL, 0, NULL);
+if (err) {
+    mciGetErrorStringA(err, errorBuf, 128);  // Komunikat błędu
+    MessageBoxA(NULL, errorBuf, "Błąd", MB_ICONERROR);
+}
+Szczegółowa diagnostyka błędów multimedialnych.
+
+8. Podsumowanie Techniczne
+8.1 Mocne Strony
+Modularność: Jasny podział na klasy (VirtualAssistant, Minigame).
+
+Integracja z Systemem: Pełne wykorzystanie WinAPI i PowerShell.
+
+Grywalizacja: Mechanika gry z progresywnym poziomem trudności.
+
+8.2 Słabe Strony
+Brak RAII: Manualne zarządzanie wskaźnikami i uchwytami.
+
+Ryzyka Bezpieczeństwa: Dowolne wykonanie komend shell (system()).
+
+8.3 Rekomendacje
+Zastąpić system() bezpiecznymi odpowiednikami (np. CreateProcess()).
+
+Dodać szyfrowanie logów i wrażliwych danych.
+
+Wprowadzić warstwę abstrakcji dla operacji systemowych.
