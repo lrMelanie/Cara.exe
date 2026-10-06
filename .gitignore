@@ -1,47 +1,31 @@
-# Prerequisites
 *.d
-
-# Compiled Object files
 *.slo
 *.lo
 *.o
 *.obj
-
-# Precompiled Headers
 *.gch
 *.pch
-
-# Compiled Dynamic libraries
 *.so
 *.dylib
 *.dll
-
-# Fortran module files
 *.mod
 *.smod
-
-# Compiled Static libraries
 *.lai
 *.la
 *.a
 *.lib
-
-# Executables
 *.exe
 !Cara.exe/
 *.out
 *.app
-
-# Visual Studio working files (per-user, must not be committed)
+*.logs
+*.log
+*.tlog
 .vs/
 *.vsidx
 *.suo
-
-# Runtime logs (may contain local / personal data - never commit)
 Cara.exe/resources/logs/*
 !Cara.exe/resources/logs/.gitkeep
-
-# Per-user minigame high scores (do not sync)
 Cara.exe/resources/data/minigame/coderunner/hscore.txt
 Cara.exe/resources/data/minigame/dicearena/best.txt
 Cara.exe/resources/data/minigame/reactor/best.txt
