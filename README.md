@@ -30,6 +30,7 @@ GUI interface development
   - Smart reminders with Scroll Lock trigger
   - Schedule management (`schedule add/list/remove`)
   - Motivational quotes database (`vol1.txt`, `vol2.txt`)
+  - Network recovery (`fix me`) - restores Wi-Fi/Ethernet/Bluetooth via `guardian_angel.bat`
 - **Coderunner Minigame** ⌨️:
   - Timed code-typing challenges
   - Highscore system (`hscore.txt`)
@@ -67,6 +68,7 @@ probably should work
 > motto
 > say
 > help
+> fix me          # recovery: re-enables network if an experimental command cut it off
 
 # Minigame activation
 > minigame 

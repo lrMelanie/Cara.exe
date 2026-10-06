@@ -338,6 +338,7 @@ void VirtualAssistant::show_help() {
         << "  say         - Assistant says something\n"
         << "  schedule    - Manage events\n"
         << "  minigame    - Test Yourself\n"
+        << "  fix me      - Restore network connectivity\n"
         << "  exit        - Quit program\n";
 }
 

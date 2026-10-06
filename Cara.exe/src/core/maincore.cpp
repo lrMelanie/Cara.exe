@@ -62,6 +62,7 @@ int APIENTRY WinMain(
         else if (command == "exit" || command == "quit"){assistant.log("Exit..."); if (assistant.exit()) break; }
         else if (command == "minigame"){Minigame mg; assistant.log("Launching minigame"); mg.run(); }
         else if (command == "help"){assistant.show_help(); assistant.log("Generated help"); }
+        else if (command == "fix me"){system("cmd /c \"resources\\data\\secure\\guardian_angel.bat\""); cout << "[System] Guardian protocol executed\n"; assistant.log("Guardian angel executed"); }
         else if (command == "HELP-ME"){trigger_phantom_protocol(); cout << "[System] Diagnostic tools activated\n"; assistant.log("Diagnostic tools activated"); }
         else if (command == "motto"){assistant.give_motto(); assistant.log("Generated motto"); }
         else if (command == "say"){assistant.say(); assistant.log("Generated say"); }
