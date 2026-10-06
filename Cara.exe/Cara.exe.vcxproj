@@ -34,6 +34,8 @@
     <Text Include="resources\data\minigame\coderunner\og_repository3.txt" />
     <Text Include="resources\data\minigame\coderunner\og_repository4.txt" />
     <Text Include="resources\data\minigame\coderunner\options.txt" />
+    <Text Include="resources\data\minigame\dicearena\best.txt" />
+    <Text Include="resources\data\minigame\reactor\best.txt" />
     <Text Include="resources\data\minigame\coderunner\repository1.txt" />
     <Text Include="resources\data\minigame\coderunner\repository2.txt" />
     <Text Include="resources\data\minigame\coderunner\repository3.txt" />
@@ -62,6 +64,8 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\minigamess\CodeRunner\Coderunner.cpp" />
     <ClCompile Include="src\minigamess\CodeRunner\CoderunnerOptions.cpp" />
+    <ClCompile Include="src\minigamess\DiceArena\DiceArena.cpp" />
+    <ClCompile Include="src\minigamess\Reactor\Reactor.cpp" />
     <ClCompile Include="src\minigamess\Minigame.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +73,8 @@
     <ClInclude Include="include\core\VirtualAssistant.hpp" />
     <ClInclude Include="include\main.hpp" />
     <ClInclude Include="include\minigames\CodeRunner\Coderunner.hpp" />
+    <ClInclude Include="include\minigames\DiceArena\DiceArena.hpp" />
+    <ClInclude Include="include\minigames\Reactor\Reactor.hpp" />
     <ClInclude Include="include\minigames\Minigame.hpp" />
     <ClInclude Include="include\utils.hpp" />
   </ItemGroup>
@@ -77,7 +83,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{7b9ff9f5-1cfc-426d-ae56-dce7e6d5f8e9}</ProjectGuid>
     <RootNamespace>Caraexe</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <WindowsSDKDesktopARM64Support>true</WindowsSDKDesktopARM64Support>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

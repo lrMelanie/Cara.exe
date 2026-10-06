@@ -262,7 +262,7 @@ void VirtualAssistant::process_schedule_command(const std::string& args) {
     if (action == "add") {
         iss >> date >> time;
         getline(iss, event);
-        event = event.substr(1);
+        if (!event.empty()) event = event.substr(1);
         add_event(date + " " + time, event);
         print_slowly("Event added: " + event + "\n");
     }

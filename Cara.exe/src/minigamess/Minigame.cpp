@@ -1,5 +1,7 @@
 ﻿#include <minigames/Minigame.hpp>
 #include <minigames/CodeRunner/Coderunner.hpp>
+#include <minigames/DiceArena/DiceArena.hpp>
+#include <minigames/Reactor/Reactor.hpp>
 #include <utils.hpp>
 #include <core/load.hpp>
 #include <core/VirtualAssistant.hpp>
@@ -24,7 +26,9 @@ void Minigame::run(){
             << "  ║            node: cara.exe   clearance: OMEGA         ║\n"
             << "  ╠══════════════════════════════════════════════════════╣\n"
             << "  ║   [1] INITIATE CODE RUNNER                           ║\n"
-            << "  ║   [2] RETURN TO MAIN SYSTEM                          ║\n"
+            << "  ║   [2] ENTER DICE ARENA                               ║\n"
+            << "  ║   [3] REACTOR CORE                                   ║\n"
+            << "  ║   [4] RETURN TO MAIN SYSTEM                          ║\n"
             << "  ╚══════════════════════════════════════════════════════╝\n"
             << "\n  root@cara:~# " << "\x1b[0m";
         getline(cin, choice);
@@ -34,6 +38,14 @@ void Minigame::run(){
             game.run();
         }
         else if (choice == "2") {
+            MG_DiceArena::DiceArena game;
+            game.run();
+        }
+        else if (choice == "3") {
+            MG_Reactor::Reactor game;
+            game.run();
+        }
+        else if (choice == "4") {
             break;
         }
         else {

@@ -54,53 +54,29 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="maincore.cpp">
+    <ClCompile Include="src\core\load.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\core\maincore.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="load.cpp">
-      <Filter>Pliki źródłowe\Data</Filter>
+    <ClCompile Include="src\core\VirtualAssistant.cpp">
+      <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Minigame.cpp">
-      <Filter>Pliki źródłowe\Game</Filter>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="VirtualAssistant.cpp">
-      <Filter>Pliki źródłowe\Data\VirtualAssistant</Filter>
+    <ClCompile Include="src\minigamess\CodeRunner\Coderunner.cpp">
+      <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Minigame\Coderunner.cpp">
-      <Filter>Pliki źródłowe\Game\Coderunner</Filter>
+    <ClCompile Include="src\minigamess\CodeRunner\CoderunnerOptions.cpp">
+      <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Minigame\CoderunnerOptions.cpp">
-      <Filter>Pliki źródłowe\Game\Coderunner</Filter>
+    <ClCompile Include="src\minigamess\Minigame.cpp">
+      <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Data\vol1.txt">
-      <Filter>Pliki źródłowe\Data</Filter>
-    </Text>
-    <Text Include="Data\vol2.txt">
-      <Filter>Pliki źródłowe\Data</Filter>
-    </Text>
-    <Text Include="Data\fileVerify1.txt">
-      <Filter>Pliki źródłowe\Data\verfile</Filter>
-    </Text>
-    <Text Include="Data\fileVerify2.txt">
-      <Filter>Pliki źródłowe\Data\verfile</Filter>
-    </Text>
-    <Text Include="Data\Mono\etc\EmbedRuntime\air_plane_log.txt">
-      <Filter>Pliki źródłowe\Data\Mono\etc\EmbedRuntime</Filter>
-    </Text>
-    <Text Include="Data\Mono\etc\EmbedRuntime\airplane_log.txt">
-      <Filter>Pliki źródłowe\Data\Mono\etc\EmbedRuntime</Filter>
-    </Text>
-    <Text Include="Data\assistant.log">
-      <Filter>Pliki źródłowe\Data</Filter>
-    </Text>
-    <Text Include="Data\Mono\etc\EmbedRuntime\bluetooth_log.txt">
-      <Filter>Pliki źródłowe\Data\Mono\etc\EmbedRuntime</Filter>
-    </Text>
     <Text Include="Minigame\og_repository1.txt">
       <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
     </Text>
@@ -244,45 +220,6 @@
     </Text>
     <Text Include="Minigame\repository8.txt">
       <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Minigame\og_repository1.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Minigame\og_repository2.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Minigame\og_repository3.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Minigame\og_repository4.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Minigame\repository1.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Minigame\repository2.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Minigame\repository3.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Minigame\repository4.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Minigame\repository5.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Minigame\repository6.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Minigame\repository7.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Minigame\repository8.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Data\Mono\etc\EmbedRuntime\mono.txt">
-      <Filter>Pliki źródłowe\Data\Mono\etc\EmbedRuntime</Filter>
     </Text>
     <Text Include="Minigame\repository1.txt" />
     <Text Include="Minigame\repository2.txt" />
@@ -310,9 +247,6 @@
       <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
     </Text>
     <Text Include="Minigame\og_repository4.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Minigame\options.txt">
       <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
     </Text>
     <Text Include="Minigame\repository1.txt">
@@ -347,12 +281,6 @@
     </Text>
     <Text Include="Minigame\*.txt">
       <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
-    <Text Include="Dokumentacja.txt">
-      <Filter>Pliki źródłowe\Data\Mono\etc\mono</Filter>
-    </Text>
-    <Text Include="Data\todo.txt">
-      <Filter>Pliki źródłowe\Data\Mono\etc\mono</Filter>
     </Text>
     <Text Include="Minigame\repository1.txt" />
     <Text Include="Minigame\repository2.txt" />
@@ -533,9 +461,6 @@
     <Text Include="Minigame\repository1.txt">
       <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
     </Text>
-    <Text Include="Minigame\hscore.txt">
-      <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
-    </Text>
     <Text Include="Minigame\repository2.txt">
       <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
     </Text>
@@ -557,73 +482,62 @@
     <Text Include="Minigame\repository8.txt">
       <Filter>Pliki źródłowe\Game\Coderunner\CodrunnerData</Filter>
     </Text>
-    <Text Include="Data\Mono\etc\EmbedRuntime\PseudoDokumentacja.txt">
-      <Filter>Pliki źródłowe\Data\Mono\etc\EmbedRuntime</Filter>
-    </Text>
+    <Text Include="resources\data\docs\Dokumentacja.txt" />
+    <Text Include="resources\data\docs\mono.txt" />
+    <Text Include="resources\data\docs\PseudoDokumentacja.txt" />
+    <Text Include="resources\data\docs\todo.txt" />
+    <Text Include="resources\data\fileVerify1.txt" />
+    <Text Include="resources\data\fileVerify2.txt" />
+    <Text Include="resources\data\minigame\coderunner\hscore.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository1.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository2.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository3.txt" />
+    <Text Include="resources\data\minigame\coderunner\og_repository4.txt" />
+    <Text Include="resources\data\minigame\coderunner\options.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository1.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository2.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository3.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository4.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository5.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository6.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository7.txt" />
+    <Text Include="resources\data\minigame\coderunner\repository8.txt" />
+    <Text Include="resources\data\vol1.txt" />
+    <Text Include="resources\data\vol2.txt" />
+    <Text Include="resources\logs\airplane_log.txt" />
+    <Text Include="resources\logs\assistant.log" />
+    <Text Include="resources\logs\bluetooth_log.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="VirtualAssistant.h">
+    <ClInclude Include="include\core\load.hpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Minigame.h">
+    <ClInclude Include="include\core\VirtualAssistant.hpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="utils.h">
+    <ClInclude Include="include\main.hpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="load.h">
+    <ClInclude Include="include\minigames\CodeRunner\Coderunner.hpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
+    <ClInclude Include="include\minigames\Minigame.hpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils.hpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="tools\devcon.exe">
-      <Filter>Pliki źródłowe\Tools</Filter>
-    </None>
-    <None Include="Data\Mono\etc\EmbedRuntime\mono.bat">
-      <Filter>Pliki źródłowe\Data\Mono\etc\EmbedRuntime</Filter>
-    </None>
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\ac_v2.3.bat">
-      <Filter>Pliki źródłowe\Data\Mono\etc\mono\scripts\work in progress</Filter>
-    </None>
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\BlockchainIntegrity.bat">
-      <Filter>Pliki źródłowe\Data\Mono\etc\mono\scripts\work in progress</Filter>
-    </None>
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\CCD.bat">
-      <Filter>Pliki źródłowe\Data\Mono\etc\mono\scripts\work in progress</Filter>
-    </None>
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\donttouch.bat">
-      <Filter>Pliki źródłowe\Data\Mono\etc\mono\scripts\work in progress</Filter>
-    </None>
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\evprecorder.bat">
-      <Filter>Pliki źródłowe\Data\Mono\etc\mono\scripts\work in progress</Filter>
-    </None>
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\firewall.bat">
-      <Filter>Pliki źródłowe\Data\Mono\etc\mono\scripts\work in progress</Filter>
-    </None>
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\sec.bat">
-      <Filter>Pliki źródłowe\Data\Mono\etc\mono\scripts\work in progress</Filter>
-    </None>
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\signal_decay_monitor.bat">
-      <Filter>Pliki źródłowe\Data\Mono\etc\mono\scripts\work in progress</Filter>
-    </None>
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\static.bat">
-      <Filter>Pliki źródłowe\Data\Mono\etc\mono\scripts\work in progress</Filter>
-    </None>
-    <None Include="Data\Mono\etc\mono\scripts\work in progress\Surveillance Hub.bat">
-      <Filter>Pliki źródłowe\Data\Mono\etc\mono\scripts\work in progress</Filter>
+    <None Include="..\README.md" />
+    <None Include="resources\data\secure\guardian_angel.bat">
+      <Filter>Pliki źródłowe</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Media Include="Data\Mono\etc\mono\scripts\c1337.mp3">
-      <Filter>Pliki źródłowe\Data\Mono\etc\mono\scripts</Filter>
-    </Media>
+    <Media Include="resources\audio\c1337.mp3" />
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="Cara.exe.manifest">
-      <Filter>Pliki źródłowe\Data\Mono\etc\EmbedRuntime</Filter>
-    </Manifest>
+    <Manifest Include="resources\manifest\Cara.exe.manifest" />
   </ItemGroup>
 </Project>

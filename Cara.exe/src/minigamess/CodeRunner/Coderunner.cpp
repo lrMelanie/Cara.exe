@@ -147,6 +147,7 @@ CodeRunner::CodeRunner() : gen(rd()) {
 }
 
 void CodeRunner::loadHighScore() {
+    highScore = 0;
     ifstream file(rep_path + "hscore.txt");
     if (file) file >> highScore;
 }
@@ -170,7 +171,8 @@ vector<string> CodeRunner::loadRepositoryFile(const string& path) {
 
 
 vector<string> CodeRunner::getConsecutiveLines(const vector<string>& lines, int count) {
-    if (lines.size() < static_cast<size_t>(count)) return {};
+    if (lines.empty()) return {};
+    if (lines.size() < static_cast<size_t>(count)) count = static_cast<int>(lines.size());
     uniform_int_distribution<size_t> dist(0, lines.size() - count);
     size_t start = dist(gen);
     return vector<string>(lines.begin() + start, lines.begin() + start + count);

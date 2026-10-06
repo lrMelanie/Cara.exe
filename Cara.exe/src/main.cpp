@@ -126,11 +126,7 @@ void enable_airplane_mode() {
 
 
 void activate_bluetooth() {
-    char currentDir[MAX_PATH];
-    GetModuleFileNameA(NULL, currentDir, MAX_PATH);
-    string exePath(currentDir);
-    size_t lastSlash = exePath.find_last_of("/\\");
-    string devconPath = exePath.substr(0, lastSlash) + "/resources/Tools/devcon.exe";
+    string devconPath = "resources/Tools/devcon.exe";
     string toolPath = "\"" + devconPath + "\"";
 
     const char* embed_log = "resources/logs/bluetooth_log.txt";
