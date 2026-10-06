@@ -104,10 +104,10 @@ void Reactor::playSimple() {
     int timer = 10, loading = 0, szansa, points = 0;
     int irp = 0, irc = 0, irw = 0, ira = 0, ira1 = 0, ira2 = 0, iro = 0, awari = 0, nawari = 0;
     char doing;
-    string zatrzymanie;
+    string stop;
 
     cls(); showCur();
-    cout << GRN << "WCZYTYWANIE...\n" << RST;
+    cout << GRN << "LOADING...\n" << RST;
     for (int i = 0; i < 19; i++) {
         cout << loading << "%\n";
         if (loading <= 10) { loading++; Sleep(120); }
@@ -122,19 +122,19 @@ void Reactor::playSimple() {
 
     cout << "-------------------\n";
     Sleep(400);
-    cout << "WPROWADZ AKTUALNA TEMPERATURE REAKTORA : ";
+    cout << "ENTER CURRENT REACTOR TEMPERATURE: ";
     temp = readInt(0);
 
     do {
         if (temp < 0) temp = 0;
-        cout << "\n" << heatColor(temp) << "AKTUALNA TEMPERATURA: " << temp << RST << "\n";
-        if (temp == 0) cout << "REAKTOR W TRYBIE CZUWANIA PROSZENIE O WLACZENIE MOCY";
-        else if (temp < 30) cout << GRN << "TEMPERATURA PRAWIDLOWA. NIE REAGOWAC" << RST;
-        else if (temp < 50) cout << "REAKTOR W STANIE PILNOWANIA. OBUDZIC PRACOWNIKA";
-        else if (temp < 70) cout << YEL << "TEMPERATURA WYSOKA. DOLAC WODY." << RST;
-        else if (temp < 100) cout << RED << "TEMPERATURA REAKTORA BLISKO STANU KRYTYCZNEGO. WYLACZYC DO CZASU SCHLODZENIA" << RST;
+        cout << "\n" << heatColor(temp) << "CURRENT TEMPERATURE: " << temp << RST << "\n";
+        if (temp == 0) cout << "REACTOR IN STANDBY. PLEASE ENGAGE POWER";
+        else if (temp < 30) cout << GRN << "TEMPERATURE NOMINAL. NO ACTION NEEDED" << RST;
+        else if (temp < 50) cout << "REACTOR ON WATCH. WAKE THE OPERATOR";
+        else if (temp < 70) cout << YEL << "TEMPERATURE HIGH. ADD WATER." << RST;
+        else if (temp < 100) cout << RED << "REACTOR NEAR CRITICAL. SHUT DOWN UNTIL COOLED" << RST;
         else {
-            cout << RED << BOLD << "REAKTOR SIEGNAL STANU KRYTYCZNEGO. WYBUCH ZA 45 SEKUND. TWOJE KOLA RATUNKOWE: ZADZWON DO RODZINY LUB ZACZNIJ SIE MODLIC" << RST;
+            cout << RED << BOLD << "REACTOR HAS GONE CRITICAL. MELTDOWN IN 45 SECONDS. YOUR LIFELINES: CALL YOUR FAMILY OR START PRAYING" << RST;
             for (timer = 10; timer >= 0; timer--) {
                 cout << "\n" << RED << timer << RST << "\n";
                 Sleep(400);
@@ -143,7 +143,7 @@ void Reactor::playSimple() {
             break;
         }
 
-        cout << "\nLISTA POLECEN: \nW - WLACZENIE CHLODZENIA \nP - ZWIEKSZENIE MOCY \nQ - WYLACZENIE \nC - OBSERWUJ DALEJ\n";
+        cout << "\nCOMMANDS: \nW - ENGAGE COOLING \nP - INCREASE POWER \nQ - SHUT DOWN \nC - KEEP OBSERVING\n";
         cout << ">> ";
         doing = readKey();
 
@@ -161,8 +161,8 @@ void Reactor::playSimple() {
             break;
 
         case 'q':
-            cout << "SYSTEM WYLACZONY\n";
-            zatrzymanie = "STOP";
+            cout << "SYSTEM SHUT DOWN\n";
+            stop = "STOP";
             break;
 
         case 'c':
@@ -175,14 +175,14 @@ void Reactor::playSimple() {
             ira++;
             szansa = rand() % 25 + 1;
             if (szansa > 10) {
-                cout << RED << "WYLACZENIE AWARYJNE NIE ZADZIALALO. AWARIA SYSTEMU" << RST;
+                cout << RED << "EMERGENCY SHUTDOWN FAILED. SYSTEM FAILURE" << RST;
                 temp = temp + (rand() % 45 + 10);
                 awari = awari + points;
                 points = points + points;
                 ira1++;
             }
             else {
-                cout << "WYLACZANIE AWARYJNE SYSTEMU";
+                cout << "EMERGENCY SYSTEM SHUTDOWN";
                 temp = temp - (rand() % 45 + 10);
                 nawari = nawari + (points / 2);
                 points = points - (points / 2);
@@ -192,33 +192,33 @@ void Reactor::playSimple() {
 
         iro++;
 
-        if (zatrzymanie == "STOP") {
-            cout << "\n\nTwoje Punkty: " << points;
-            cout << "\nIlosc ruchow: " << iro;
-            cout << "\nIlosc chlodzenia: " << irw << "(" << irw * 5 << ")";
-            cout << "\nIlosc zwiekszania mocy: " << irp << "(+" << irp * 3 << ")";
-            cout << "\nIlosc obserwowania: " << irc << "(+" << irc * 1 << ")";
-            cout << "\nIlosc zasilania awaryjnego: " << ira;
-            cout << "\nIlosc awarii: " << ira1 << "(+" << awari << ")";
-            cout << "\nIlosc wylaczen awaryjnych: " << ira2 << "(" << nawari << ")";
+        if (stop == "STOP") {
+            cout << "\n\nYour Points: " << points;
+            cout << "\nMoves: " << iro;
+            cout << "\nCooling actions: " << irw << "(" << irw * 5 << ")";
+            cout << "\nPower increases: " << irp << "(+" << irp * 3 << ")";
+            cout << "\nObservations: " << irc << "(+" << irc * 1 << ")";
+            cout << "\nEmergency actions: " << ira;
+            cout << "\nFailures: " << ira1 << "(+" << awari << ")";
+            cout << "\nEmergency shutdowns: " << ira2 << "(" << nawari << ")";
             break;
         }
 
     } while (true);
 
-    pause("nacisnij Enter...");
+    pause("press Enter...");
 }
 
 void Reactor::playExtended() {
     int temp = 20, pressure = 10, coolant = 100, power = 0, turn = 0;
     loadBest();
-    string note = "Reaktor online. Trzymaj temp i cisnienie ponizej 100, produkuj moc.";
+    string note = "Reactor online. Keep temp and pressure below 100 and produce power.";
     bool scram = false;
 
     auto render = [&]() {
         cls(); hideCur();
         ostringstream st;
-        st << "  ZMIANA " << turn << "     MOC " << power << "     REKORD " << best;
+        st << "  SHIFT " << turn << "     POWER " << power << "     BEST " << best;
         cout << GRN
             << hline("╔", "╗") << "\n"
             << row("  REACTOR CORE // EXTENDED            [ ONLINE ]") << "\n"
@@ -226,13 +226,13 @@ void Reactor::playExtended() {
             << row(st.str()) << "\n"
             << hline("╚", "╝") << "\n" << RST;
 
-        cout << "\n   TEMP      " << gauge(temp, 100, heatColor(temp)) << "  " << heatColor(temp) << temp << "/100" << RST << "\n";
-        cout << "   CISNIENIE " << gauge(pressure, 100, heatColor(pressure)) << "  " << heatColor(pressure) << pressure << "/100" << RST << "\n";
-        cout << "   CHLODZIWO " << gauge(coolant, 100, CYAN) << "  " << CYAN << coolant << "/100" << RST << "\n\n";
+        cout << "\n   TEMP     " << gauge(temp, 100, heatColor(temp)) << "  " << heatColor(temp) << temp << "/100" << RST << "\n";
+        cout << "   PRESSURE " << gauge(pressure, 100, heatColor(pressure)) << "  " << heatColor(pressure) << pressure << "/100" << RST << "\n";
+        cout << "   COOLANT  " << gauge(coolant, 100, CYAN) << "  " << CYAN << coolant << "/100" << RST << "\n\n";
 
-        cout << GRY << "   B=boost moc   C=chlodzenie   V=upust cisnienia   H=hold   S=scram\n" << RST;
+        cout << GRY << "   B=boost power  C=cool  V=vent pressure  H=hold  S=scram\n" << RST;
         if (!note.empty()) cout << YEL << "\n   " << note << RST << "\n";
-        cout << GRN << "\n  reaktor >> " << RST;
+        cout << GRN << "\n  reactor >> " << RST;
         showCur();
     };
 
@@ -240,10 +240,10 @@ void Reactor::playExtended() {
         turn++;
         temp += (int)(gen() % 3);
         int ev = (int)(gen() % 100) + 1;
-        if (ev <= 15) { int s = 8 + (int)(gen() % 8); temp += s; pressure += 6; note = "ZDARZENIE: skok mocy! temp +" + to_string(s) + ", cisnienie rosnie."; }
-        else if (ev <= 30) { int leak = 10 + (int)(gen() % 10); coolant -= leak; if (coolant < 0) coolant = 0; temp += 5; note = "ZDARZENIE: wyciek chlodziwa (-" + to_string(leak) + ")."; }
-        else if (ev <= 40) { if (temp < 50 && pressure < 60) { power += 15; note = "ZDARZENIE: inspekcja zaliczona (+15 mocy)."; } else { note = "ZDARZENIE: inspekcja oblana (reaktor zbyt obciazony)."; } }
-        else if (turn > 1) { note = "Reaktor stabilny."; }
+        if (ev <= 15) { int s = 8 + (int)(gen() % 8); temp += s; pressure += 6; note = "EVENT: power surge! temp +" + to_string(s) + ", pressure rising."; }
+        else if (ev <= 30) { int leak = 10 + (int)(gen() % 10); coolant -= leak; if (coolant < 0) coolant = 0; temp += 5; note = "EVENT: coolant leak (-" + to_string(leak) + ")."; }
+        else if (ev <= 40) { if (temp < 50 && pressure < 60) { power += 15; note = "EVENT: inspection passed (+15 power)."; } else { note = "EVENT: inspection failed (reactor too stressed)."; } }
+        else if (turn > 1) { note = "Reactor stable."; }
 
         if (coolant > 100) coolant = 100;
         if (temp < 0) temp = 0;
@@ -252,12 +252,12 @@ void Reactor::playExtended() {
         render();
         char c = readKey();
 
-        if (c == 'b') { int g = 8 + (int)(gen() % 8); temp += g; pressure += 5; power += 10; note = "BOOST: +10 mocy, temp +" + to_string(g) + "."; }
-        else if (c == 'c') { if (coolant >= 15) { coolant -= 15; int cd = 12 + (int)(gen() % 9); temp -= cd; if (temp < 0) temp = 0; note = "CHLODZENIE: temp -" + to_string(cd) + ", chlodziwo -15."; } else note = "Brak chlodziwa! Nie mozna schlodzic."; }
-        else if (c == 'v') { int vd = 20 + (int)(gen() % 11); pressure -= vd; if (pressure < 0) pressure = 0; temp -= 5; if (temp < 0) temp = 0; power -= 3; if (power < 0) power = 0; note = "UPUST: cisnienie -" + to_string(vd) + ", -3 mocy."; }
-        else if (c == 'h') { power += 2; coolant += 5; if (coolant > 100) coolant = 100; temp += 1 + (int)(gen() % 3); note = "HOLD: +2 mocy, chlodziwo regeneruje."; }
+        if (c == 'b') { int g = 8 + (int)(gen() % 8); temp += g; pressure += 5; power += 10; note = "BOOST: +10 power, temp +" + to_string(g) + "."; }
+        else if (c == 'c') { if (coolant >= 15) { coolant -= 15; int cd = 12 + (int)(gen() % 9); temp -= cd; if (temp < 0) temp = 0; note = "COOLING: temp -" + to_string(cd) + ", coolant -15."; } else note = "No coolant! Cannot cool."; }
+        else if (c == 'v') { int vd = 20 + (int)(gen() % 11); pressure -= vd; if (pressure < 0) pressure = 0; temp -= 5; if (temp < 0) temp = 0; power -= 3; if (power < 0) power = 0; note = "VENT: pressure -" + to_string(vd) + ", -3 power."; }
+        else if (c == 'h') { power += 2; coolant += 5; if (coolant > 100) coolant = 100; temp += 1 + (int)(gen() % 3); note = "HOLD: +2 power, coolant regenerates."; }
         else if (c == 's') { scram = true; break; }
-        else { note = "Nieznana komenda. Reaktor czeka."; }
+        else { note = "Unknown command. Reactor waiting."; }
 
         if (temp >= 100 || pressure >= 100) {
             cls(); hideCur();
@@ -265,11 +265,11 @@ void Reactor::playExtended() {
                 << hline("╔", "╗") << "\n"
                 << row("              M E L T D O W N") << "\n"
                 << hline("╚", "╝") << "\n" << RST;
-            for (int k = 5; k >= 1; k--) { cout << RED << "\n        rdzen przegrzany... " << k << RST << "\n"; Sleep(350); }
-            cout << RED << BOLD << "\n   REAKTOR UTRACONY.\n" << RST;
-            cout << GRN << "\n   moc wyprodukowana : " << power << "\n   rekord : " << best << "\n" << RST;
+            for (int k = 5; k >= 1; k--) { cout << RED << "\n        core overheating... " << k << RST << "\n"; Sleep(350); }
+            cout << RED << BOLD << "\n   REACTOR LOST.\n" << RST;
+            cout << GRN << "\n   power produced : " << power << "\n   best : " << best << "\n" << RST;
             saveBest(power);
-            pause("nacisnij Enter...");
+            pause("press Enter...");
             return;
         }
     }
@@ -277,13 +277,13 @@ void Reactor::playExtended() {
     cls(); hideCur();
     cout << GRN2 << BOLD
         << hline("╔", "╗") << "\n"
-        << row("        SCRAM - BEZPIECZNE WYLACZENIE") << "\n"
+        << row("        SCRAM - SAFE SHUTDOWN") << "\n"
         << hline("╚", "╝") << "\n" << RST;
-    cout << GRN << "\n   zmiany przetrwane : " << turn << "\n   moc wyprodukowana : " << power << "\n   rekord : " << best << "\n";
+    cout << GRN << "\n   shifts survived : " << turn << "\n   power produced : " << power << "\n   best : " << best << "\n";
     saveBest(power);
-    if (power >= best) cout << YEL << "\n   >> NOWY REKORD <<\n" << RST;
+    if (power >= best) cout << YEL << "\n   >> NEW RECORD <<\n" << RST;
     (void)scram;
-    pause("nacisnij Enter...");
+    pause("press Enter...");
 }
 
 void Reactor::run() {
@@ -295,9 +295,9 @@ void Reactor::run() {
             << hline("╔", "╗") << "\n"
             << row("   >> R E A C T O R   C O R E <<") << "\n"
             << hline("╠", "╣") << "\n"
-            << row("   [1] SIMPLE CORE    (klasyczny reaktor)") << "\n"
-            << row("   [2] EXTENDED CORE (cisnienie, chlodziwo, zdarzenia)") << "\n"
-            << row("   [3] POWROT") << "\n"
+            << row("   [1] SIMPLE CORE    (classic reactor)") << "\n"
+            << row("   [2] EXTENDED CORE  (pressure, coolant, events)") << "\n"
+            << row("   [3] BACK") << "\n"
             << hline("╚", "╝") << "\n" << RST;
         cout << GRN << "\n  root@cara:~# " << RST;
         showCur();
@@ -306,7 +306,7 @@ void Reactor::run() {
         if (choice == "1") playSimple();
         else if (choice == "2") playExtended();
         else if (choice == "3") break;
-        else { cout << RED << "  nieznana opcja.\x1b[0m"; Sleep(900); }
+        else { cout << RED << "  unknown option.\x1b[0m"; Sleep(900); }
     }
     showCur();
 }

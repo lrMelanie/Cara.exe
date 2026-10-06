@@ -31,7 +31,7 @@ int APIENTRY WinMain(
     //int Hydra, hYdra, hyDra, hydRa, hydrA;
     srand(static_cast<unsigned int>(time(nullptr)));
 
-    if (!IsRunAsAdmin()){MessageBoxA(nullptr, "Run as administrator!", "Błąd", MB_ICONERROR);return 1;}
+    if (!IsRunAsAdmin()){MessageBoxA(nullptr, "Run as administrator!", "Error", MB_ICONERROR);return 1;}
     AllocConsole();
     FILE* fpOut;
     FILE* fpIn; 
