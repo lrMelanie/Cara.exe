@@ -12,14 +12,16 @@
 
 using namespace std;
 
-VirtualAssistant::VirtualAssistant() : gen(random_device()()) {
+VirtualAssistant::VirtualAssistant(bool startReminder) : gen(random_device()()) {
     logFile.open("resources/logs/assistant.log", ios::app);
 
     vol1 = load_file("resources/data/vol1.txt");
     vol2 = load_file("resources/data/vol2.txt");
 
-    reminderActive = true;
-    reminderThread = thread(&VirtualAssistant::reminderDaemon, this);
+    if (startReminder) {
+        reminderActive = true;
+        reminderThread = thread(&VirtualAssistant::reminderDaemon, this);
+    }
 }
 
 VirtualAssistant::~VirtualAssistant() {
@@ -73,11 +75,14 @@ void VirtualAssistant::reminderDaemon() {
             SendInput(1, &ip, sizeof(INPUT));
         }
         time_t now = time(nullptr);
-        for (size_t i = 0; i < schedule.size(); ++i) {
-            if (difftime(schedule[i].first, now) <= 0) {
-                cout << "\aREMINDER: " << schedule[i].second << endl;
-                log("Reminder triggered: " + schedule[i].second);
-                schedule[i].first = now + 86400;
+        {
+            lock_guard<mutex> lk(scheduleMtx);
+            for (size_t i = 0; i < schedule.size(); ++i) {
+                if (difftime(schedule[i].first, now) <= 0) {
+                    cout << "\aREMINDER: " << schedule[i].second << endl;
+                    log("Reminder triggered: " + schedule[i].second);
+                    schedule[i].first = now + 86400;
+                }
             }
         }
         this_thread::sleep_for(chrono::seconds(1));
@@ -275,6 +280,7 @@ void VirtualAssistant::process_schedule_command(const std::string& args) {
 }
 
 void VirtualAssistant::list_events() {
+    lock_guard<mutex> lk(scheduleMtx);
     if (schedule.empty()) {
         print_slowly("No scheduled events\n");
         return;
@@ -289,6 +295,7 @@ void VirtualAssistant::list_events() {
 }
 
 void VirtualAssistant::remove_event(int index) {
+    lock_guard<mutex> lk(scheduleMtx);
     if (index < 0 || index >= schedule.size()) {
         print_slowly("Invalid index\n");
         return;
@@ -318,7 +325,10 @@ void VirtualAssistant::add_event(const string& datetime, const string& event) {
     tm_struct.tm_min = minute;
     tm_struct.tm_isdst = -1;
 
-    schedule.push_back(make_pair(mktime(&tm_struct), event));
+    {
+        lock_guard<mutex> lk(scheduleMtx);
+        schedule.push_back(make_pair(mktime(&tm_struct), event));
+    }
     log("Event added: " + event);
 }
 
@@ -340,6 +350,6 @@ bool VirtualAssistant::exit() {
         return true;
     }
     else {
-        return true;
+        return false;
     }
 }

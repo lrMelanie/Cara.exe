@@ -49,12 +49,12 @@ GUI interface development
    - Admin privileges (for full functionality)
 
 2. **Build**:
-```bash
+```text
 git clone https://github.com/lrMelanie/Cara.exe
-cd Cara.exe
-mkdir build && cd build
-cmake .. -G "Visual Studio 17 2022" -A x64
-cmake --build . --config Release
+Open Cara.exe.sln in Visual Studio 2022
+Select the x64 configuration
+Build (Ctrl+Shift+B)
+Run Cara.exe/Cara.exe.exe from the Cara.exe/Cara.exe folder so the resources/ paths resolve
 ```
 probably should work
 

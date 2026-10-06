@@ -7,6 +7,7 @@
 #include <ctime>
 #include <atomic>
 #include <thread>
+#include <mutex>
 #include <random>
 #include <iomanip>
 #include <sstream>
@@ -23,6 +24,7 @@ protected:
     vector<pair<time_t, string>> schedule;
     atomic<bool> reminderActive{ false };
     thread reminderThread;
+    mutex scheduleMtx;
     ofstream logFile;
     mt19937 gen;
 
@@ -32,7 +34,7 @@ protected:
     void processSayingFile();
 
 public:
-    VirtualAssistant();
+    VirtualAssistant(bool startReminder = true);
     virtual ~VirtualAssistant();
     void log(const string& action);
     void give_motto();

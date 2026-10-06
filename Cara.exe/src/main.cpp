@@ -119,7 +119,7 @@ void enable_airplane_mode() {
         "Get-Service -Name 'WlanSvc', 'BthServ' | "
         "Stop-Service -Force -PassThru -ErrorAction SilentlyContinue | "
         "Set-Service -StartupType Disabled -PassThru | "
-        "Out-File -Append resources/logss/airplane_log.txt"
+        "Out-File -Append resources/logs/airplane_log.txt"
         "\""
     );
 }
@@ -130,12 +130,13 @@ void activate_bluetooth() {
     GetModuleFileNameA(NULL, currentDir, MAX_PATH);
     string exePath(currentDir);
     size_t lastSlash = exePath.find_last_of("/\\");
-    string toolPath = "\"" + exePath.substr(0, lastSlash) + "resources/Tools/devcon.exe\"";
+    string devconPath = exePath.substr(0, lastSlash) + "/resources/Tools/devcon.exe";
+    string toolPath = "\"" + devconPath + "\"";
 
     const char* embed_log = "resources/logs/bluetooth_log.txt";
     ofstream log_embed(embed_log, ios::app);
 
-    DWORD attrib = GetFileAttributesA(toolPath.c_str());
+    DWORD attrib = GetFileAttributesA(devconPath.c_str());
     if (attrib == INVALID_FILE_ATTRIBUTES) {
         log_embed << "ERROR: devcon.exe not found at: " << toolPath << endl << flush;
         return;
