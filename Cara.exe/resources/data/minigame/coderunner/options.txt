@@ -1,4 +1,0 @@
-easy
-medium
-hard
-veryhard
