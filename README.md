@@ -59,6 +59,18 @@ Run Cara.exe/Cara.exe.exe from the Cara.exe/Cara.exe folder so the resources/ pa
 ```
 probably should work
 
+### ▶ Quick launch (no Visual Studio needed each time)
+After building once, just double-click **`Cara.exe/Start Cara.bat`**. It asks for
+administrator rights (UAC), sets the working directory so `resources/` resolve,
+prefers the Release build (falls back to Debug), and starts the program. Build
+again in Visual Studio only when you change the code.
+
+**Sharing with other people:** build in the **Release / x64** configuration. The
+runtime is linked statically (`/MT`), so the resulting `Cara.exe.exe` is
+self-contained and runs on any Windows 10/11 without installing any Visual C++
+redistributable. The Debug build needs Visual Studio's debug runtime DLLs and is
+not meant for distribution.
+
 
 
 ## 🕹️ Basic Usage
