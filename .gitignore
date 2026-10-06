@@ -36,3 +36,12 @@
 .vs/
 *.vsidx
 *.suo
+
+# Runtime logs (may contain local / personal data - never commit)
+Cara.exe/resources/logs/*
+!Cara.exe/resources/logs/.gitkeep
+
+# Per-user minigame high scores (do not sync)
+Cara.exe/resources/data/minigame/coderunner/hscore.txt
+Cara.exe/resources/data/minigame/dicearena/best.txt
+Cara.exe/resources/data/minigame/reactor/best.txt
